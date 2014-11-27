@@ -1,0 +1,31 @@
+= form_for @patient do |f|
+  - if @patient.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@patient.errors.count, "error")} prohibited this patient from being saved:"
+      %ul
+        - @patient.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :last_name
+    = f.text_field :last_name
+  .field
+    = f.label :first_name
+    = f.text_field :first_name
+  .field
+    = f.label :birthday
+    = f.date_select :birthday, :start_year => 1900
+  .field
+    = f.label :contact
+    = f.text_field :contact
+  .field
+    = f.label :sex
+    = f.select :sex, options_for_select([["M", 0], ["F", 1]])
+  .field
+    = f.label :status
+    = f.select :status, options_for_select(["Single", "Married", "Widowed", "Separated"])
+  .field
+    = f.label :occupation
+    = f.text_field :occupation
+  .actions
+    = f.submit 'Save'

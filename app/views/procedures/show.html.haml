@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Procedure:
+  = @procedure.procedure
+%p
+  %b Tooth no:
+  = @procedure.tooth_no
+%p
+  %b Remarks:
+  = @procedure.remarks
+%p
+  %b Date:
+  = @procedure.date
+%p
+  %b Patient:
+  = @procedure.patient
+
+= link_to 'Edit', edit_procedure_path(@procedure)
+\|
+= link_to 'Back', procedures_path

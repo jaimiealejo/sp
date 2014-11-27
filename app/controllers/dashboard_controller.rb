@@ -1,5 +1,6 @@
 class DashboardController < ApplicationController
-	def index
- end
+  def index
+  	redirect_to patients_path
+  end
 
 end

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  sched: 2014-11-28 03:23:02
+  remarks: MyText
+  procedure_id: 
+
+two:
+  sched: 2014-11-28 03:23:02
+  remarks: MyText
+  procedure_id: 

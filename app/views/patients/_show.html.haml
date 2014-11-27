@@ -1,0 +1,27 @@
+%p
+  %b Last name:
+  = patient.last_name
+%p
+  %b First name:
+  = patient.first_name
+%p
+  %b Birthday:
+  = patient.birthday
+%p
+  %b Age:
+  = Patient.compute_age(patient.birthday)
+%p
+  %b Contact:
+  = patient.contact
+%p
+  %b Sex:
+  -if patient.sex
+    F
+  -else
+    M
+%p
+  %b Status:
+  = patient.status
+%p
+  %b Occupation:
+  = patient.occupation

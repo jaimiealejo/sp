@@ -1,0 +1,30 @@
+%h1 Listing patients
+
+%table
+  %tr
+    %th Last name
+    %th First name
+    %th Birthday
+    %th Contact
+    %th Sex
+    %th Status
+    %th Occupation
+    %th
+    %th
+
+  - @patients.each do |patient|
+    %tr
+      %td= patient.last_name
+      %td= patient.first_name
+      %td= patient.birthday
+      %td= patient.contact
+      %td
+        = (patient.sex)? 'F' : 'M'
+      %td= patient.status
+      %td= patient.occupation
+      %td= link_to 'Show', patient
+      %td= link_to 'Edit', edit_patient_path(patient)
+
+%br
+
+= link_to 'New Patient', new_patient_path

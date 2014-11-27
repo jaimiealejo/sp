@@ -1,0 +1,11 @@
+%p#notice= notice
+
+= render 'show', :patient => @patient
+
+
+= link_to 'Edit', edit_patient_path(@patient)
+
+= render 'procedures/list', :procedures => @procedures, :patient_id => @patient.id
+
+= link_to 'Back', patients_path
+

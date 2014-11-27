@@ -3,11 +3,13 @@
 one:
   procedure: MyString
   tooth_no: MyString
-  remarks: MyString
+  remarks: MyText
   date: 2014-11-27
+  patient: 
 
 two:
   procedure: MyString
   tooth_no: MyString
-  remarks: MyString
+  remarks: MyText
   date: 2014-11-27
+  patient: 

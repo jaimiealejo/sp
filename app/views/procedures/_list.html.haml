@@ -1,0 +1,23 @@
+%h1 Listing procedures
+= link_to 'Add', new_patient_procedure_path(patient_id)
+
+
+%table
+  %tr
+    %th Procedure
+    %th Tooth no
+    %th Remarks
+    %th Date
+    %th
+
+
+  - procedures.each do |procedure|
+    %tr
+      %td= procedure.procedure
+      %td= procedure.tooth_no
+      %td= procedure.remarks
+      %td= procedure.date
+      %td= link_to 'Edit', edit_patient_procedure_path(patient_id, procedure)
+
+%br
+

@@ -5,8 +5,8 @@ class CreatePatients < ActiveRecord::Migration
       t.string :first_name
       t.date :birthday
       t.string :contact
-      t.character :sex
-      t.character :status
+      t.boolean :sex
+      t.string :status
       t.string :occupation
 
       t.timestamps

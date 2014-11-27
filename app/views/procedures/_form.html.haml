@@ -1,0 +1,23 @@
+= form_for ([@patient, @procedure]) do |f|
+  - if @procedure.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@procedure.errors.count, "error")} prohibited this procedure from being saved:"
+      %ul
+        - @procedure.errors.full_messages.each do |msg|
+          %li= msg 
+  .field
+    = f.label :procedure
+    = f.text_field :procedure
+  .field
+    = f.label :tooth_no
+    = f.text_field :tooth_no
+  .field
+    = f.label :remarks
+    = f.text_area :remarks
+  .field
+    = f.label :date
+    = f.date_select :date
+  .field
+    = hidden_field_tag :patient_id, value: @procedure.patient.id
+  .actions
+    = f.submit 'Save'

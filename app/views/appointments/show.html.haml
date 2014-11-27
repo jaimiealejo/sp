@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Sched:
+  = @appointment.sched
+%p
+  %b Remarks:
+  = @appointment.remarks
+%p
+  %b Procedure:
+  = @appointment.procedure_id
+
+= link_to 'Edit', edit_appointment_path(@appointment)
+\|
+= link_to 'Back', appointments_path
