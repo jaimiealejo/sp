@@ -9,11 +9,15 @@
   .field
     = f.label :sched
     = f.datetime_select :sched
+
   .field
     = f.label :remarks
     = f.text_area :remarks
   .field
-    = f.label :procedure_id
-    = f.text_field :procedure_id
+    = label_tag 'Procedure'
+    = text_field_tag 'procedure'
+  .fields
+    = label_tag 'Patient'
+    = select_tag 'patient_id', options_from_collection_for_select(Patient.all, 'id','last_name')
   .actions
     = f.submit 'Save'

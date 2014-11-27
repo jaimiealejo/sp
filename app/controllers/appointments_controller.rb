@@ -14,6 +14,7 @@ class AppointmentsController < ApplicationController
 
   def new
     @appointment = Appointment.new
+    @appointment.sched = Date.today
     respond_with(@appointment)
   end
 
@@ -22,6 +23,11 @@ class AppointmentsController < ApplicationController
 
   def create
     @appointment = Appointment.new(params[:appointment])
+    @procedure = Procedure.new
+    @procedure.procedure = params[:procedure]
+    @procedure.patient = Patient.find(params[:patient_id])
+    @procedure.save
+    @appointment.procedure = @procedure
     @appointment.save
     respond_with(@appointment)
   end

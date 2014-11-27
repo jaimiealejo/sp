@@ -13,7 +13,7 @@
     %tr
       %td= appointment.sched
       %td= appointment.remarks
-      %td= appointment.procedure_id
+      %td= appointment.procedure
       %td= link_to 'Show', appointment
       %td= link_to 'Edit', edit_appointment_path(appointment)
       %td= link_to 'Destroy', appointment, :method => :delete, :data => { :confirm => 'Are you sure?' }
