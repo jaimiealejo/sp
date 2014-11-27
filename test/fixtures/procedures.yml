@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  procedure: MyString
+  tooth_no: MyString
+  remarks: MyString
+  date: 2014-11-27
+
+two:
+  procedure: MyString
+  tooth_no: MyString
+  remarks: MyString
+  date: 2014-11-27
