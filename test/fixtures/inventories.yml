@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  inventory_id: 
+  quantity: 1
+  action: false
+  remarks: MyText
+  inv_date: 2014-12-02
+
+two:
+  inventory_id: 
+  quantity: 1
+  action: false
+  remarks: MyText
+  inv_date: 2014-12-02

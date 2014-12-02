@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Invoice details:
+  = @invoice_detail.invoice_details_id
+%p
+  %b Quantity:
+  = @invoice_detail.quantity
+%p
+  %b Price:
+  = @invoice_detail.price
+%p
+  %b Type:
+  = @invoice_detail.type
+%p
+  %b Type:
+  = @invoice_detail.type_id
+
+= link_to 'Edit', edit_invoice_detail_path(@invoice_detail)
+\|
+= link_to 'Back', invoice_details_path

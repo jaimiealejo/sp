@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Invoice:
+  = @invoice.invoice_id
+%p
+  %b Total amt due:
+  = @invoice.total_amt_due
+%p
+  %b Amt received:
+  = @invoice.amt_received
+%p
+  %b Balance:
+  = @invoice.balance
+%p
+  %b Invoice date:
+  = @invoice.invoice_date
+%p
+  %b Status:
+  = @invoice.status
+
+= link_to 'Edit', edit_invoice_path(@invoice)
+\|
+= link_to 'Back', invoices_path

@@ -1,0 +1,27 @@
+%h1 Listing invoice_details
+
+%table
+  %tr
+    %th Invoice details
+    %th Quantity
+    %th Price
+    %th Type
+    %th Type
+    %th
+    %th
+    %th
+
+  - @invoice_details.each do |invoice_detail|
+    %tr
+      %td= invoice_detail.invoice_details_id
+      %td= invoice_detail.quantity
+      %td= invoice_detail.price
+      %td= invoice_detail.type
+      %td= invoice_detail.type_id
+      %td= link_to 'Show', invoice_detail
+      %td= link_to 'Edit', edit_invoice_detail_path(invoice_detail)
+      %td= link_to 'Destroy', invoice_detail, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Invoice detail', new_invoice_detail_path

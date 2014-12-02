@@ -37,11 +37,6 @@ class AppointmentsController < ApplicationController
     respond_with(@appointment)
   end
 
-  def destroy
-    @appointment.destroy
-    respond_with(@appointment)
-  end
-
   private
     def set_appointment
       @appointment = Appointment.find(params[:id])

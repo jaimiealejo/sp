@@ -1,0 +1,27 @@
+%h1 Listing inventories
+
+%table
+  %tr
+    %th Inventory
+    %th Quantity
+    %th Action
+    %th Remarks
+    %th Inv date
+    %th
+    %th
+    %th
+
+  - @inventories.each do |inventory|
+    %tr
+      %td= inventory.inventory_id
+      %td= inventory.quantity
+      %td= inventory.action
+      %td= inventory.remarks
+      %td= inventory.inv_date
+      %td= link_to 'Show', inventory
+      %td= link_to 'Edit', edit_inventory_path(inventory)
+      %td= link_to 'Destroy', inventory, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Inventory', new_inventory_path

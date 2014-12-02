@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Inventory:
+  = @inventory.inventory_id
+%p
+  %b Quantity:
+  = @inventory.quantity
+%p
+  %b Action:
+  = @inventory.action
+%p
+  %b Remarks:
+  = @inventory.remarks
+%p
+  %b Inv date:
+  = @inventory.inv_date
+
+= link_to 'Edit', edit_inventory_path(@inventory)
+\|
+= link_to 'Back', inventories_path

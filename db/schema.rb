@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141127193059) do
+ActiveRecord::Schema.define(:version => 20141202023357) do
 
   create_table "appointments", :force => true do |t|
     t.datetime "sched"
@@ -22,6 +22,43 @@ ActiveRecord::Schema.define(:version => 20141127193059) do
   end
 
   add_index "appointments", ["procedure_id"], :name => "index_appointments_on_procedure_id"
+
+  create_table "inventories", :force => true do |t|
+    t.integer  "inventory_id_id"
+    t.integer  "quantity"
+    t.boolean  "action"
+    t.text     "remarks"
+    t.date     "inv_date"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "inventories", ["inventory_id_id"], :name => "index_inventories_on_inventory_id_id"
+
+  create_table "invoice_details", :force => true do |t|
+    t.string   "invoice_details_id"
+    t.integer  "quantity"
+    t.decimal  "price"
+    t.string   "type"
+    t.integer  "type_id_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  add_index "invoice_details", ["type_id_id"], :name => "index_invoice_details_on_type_id_id"
+
+  create_table "invoices", :force => true do |t|
+    t.integer  "invoice_id_id"
+    t.decimal  "total_amt_due"
+    t.decimal  "amt_received"
+    t.decimal  "balance"
+    t.date     "invoice_date"
+    t.string   "status"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "invoices", ["invoice_id_id"], :name => "index_invoices_on_invoice_id_id"
 
   create_table "patients", :force => true do |t|
     t.string   "last_name"
@@ -44,6 +81,19 @@ ActiveRecord::Schema.define(:version => 20141127193059) do
     t.datetime "updated_at", :null => false
     t.integer  "patient_id"
   end
+
+  create_table "products", :force => true do |t|
+    t.integer  "product_id_id"
+    t.string   "name"
+    t.boolean  "type"
+    t.decimal  "capital_price"
+    t.decimal  "selling_price"
+    t.text     "info"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "products", ["product_id_id"], :name => "index_products_on_product_id_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

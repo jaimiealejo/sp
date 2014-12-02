@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  invoice_id: 
+  total_amt_due: 9.99
+  amt_received: 9.99
+  balance: 9.99
+  invoice_date: 2014-12-02
+  status: MyString
+
+two:
+  invoice_id: 
+  total_amt_due: 9.99
+  amt_received: 9.99
+  balance: 9.99
+  invoice_date: 2014-12-02
+  status: MyString
