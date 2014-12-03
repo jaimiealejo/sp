@@ -2,7 +2,6 @@
 
 %table
   %tr
-    %th Product
     %th Name
     %th Type
     %th Capital price
@@ -14,7 +13,6 @@
 
   - @products.each do |product|
     %tr
-      %td= product.product_id
       %td= product.name
       %td= product.type
       %td= product.capital_price

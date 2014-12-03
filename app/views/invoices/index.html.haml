@@ -2,11 +2,10 @@
 
 %table
   %tr
-    %th Invoice
+    %th Patient
     %th Total amt due
     %th Amt received
     %th Balance
-    %th Invoice date
     %th Status
     %th
     %th
@@ -14,11 +13,10 @@
 
   - @invoices.each do |invoice|
     %tr
-      %td= invoice.invoice_id
+      %td= invoice.patient
       %td= invoice.total_amt_due
       %td= invoice.amt_received
       %td= invoice.balance
-      %td= invoice.invoice_date
       %td= invoice.status
       %td= link_to 'Show', invoice
       %td= link_to 'Edit', edit_invoice_path(invoice)

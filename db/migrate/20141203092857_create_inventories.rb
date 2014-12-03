@@ -1,14 +1,15 @@
 class CreateInventories < ActiveRecord::Migration
   def change
     create_table :inventories do |t|
-      t.references :inventory_id
+      t.references :product
       t.integer :quantity
       t.boolean :action
+      t.references :user
       t.text :remarks
-      t.date :inv_date
 
       t.timestamps
     end
-    add_index :inventories, :inventory_id_id
+    add_index :inventories, :product_id
+    add_index :inventories, :user_id
   end
 end

@@ -1,7 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  product_id: 
   name: MyString
   type: false
   capital_price: 9.99
@@ -9,7 +8,6 @@ one:
   info: MyText
 
 two:
-  product_id: 
   name: MyString
   type: false
   capital_price: 9.99

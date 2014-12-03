@@ -2,22 +2,22 @@
 
 %table
   %tr
-    %th Inventory
+    %th Product
     %th Quantity
     %th Action
+    %th User
     %th Remarks
-    %th Inv date
     %th
     %th
     %th
 
   - @inventories.each do |inventory|
     %tr
-      %td= inventory.inventory_id
+      %td= inventory.product
       %td= inventory.quantity
       %td= inventory.action
+      %td= inventory.user
       %td= inventory.remarks
-      %td= inventory.inv_date
       %td= link_to 'Show', inventory
       %td= link_to 'Edit', edit_inventory_path(inventory)
       %td= link_to 'Destroy', inventory, :method => :delete, :data => { :confirm => 'Are you sure?' }

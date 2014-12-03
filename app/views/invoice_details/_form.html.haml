@@ -7,9 +7,6 @@
           %li= msg
 
   .field
-    = f.label :invoice_details_id
-    = f.text_field :invoice_details_id
-  .field
     = f.label :quantity
     = f.number_field :quantity
   .field
@@ -19,7 +16,7 @@
     = f.label :type
     = f.text_field :type
   .field
-    = f.label :type_id
-    = f.text_field :type_id
+    = f.label :type
+    = f.text_field :type
   .actions
     = f.submit 'Save'

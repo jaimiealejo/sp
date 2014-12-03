@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Invoice:
+  = @invoice_invoice_detail.invoice
+%p
+  %b Invoice detail:
+  = @invoice_invoice_detail.invoice_detail
+%p
+  %b Remarks:
+  = @invoice_invoice_detail.remarks
+
+= link_to 'Edit', edit_invoice_invoice_detail_path(@invoice_invoice_detail)
+\|
+= link_to 'Back', invoice_invoice_details_path

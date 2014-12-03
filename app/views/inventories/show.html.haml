@@ -1,8 +1,8 @@
 %p#notice= notice
 
 %p
-  %b Inventory:
-  = @inventory.inventory_id
+  %b Product:
+  = @inventory.product
 %p
   %b Quantity:
   = @inventory.quantity
@@ -10,11 +10,11 @@
   %b Action:
   = @inventory.action
 %p
+  %b User:
+  = @inventory.user
+%p
   %b Remarks:
   = @inventory.remarks
-%p
-  %b Inv date:
-  = @inventory.inv_date
 
 = link_to 'Edit', edit_inventory_path(@inventory)
 \|

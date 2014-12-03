@@ -7,8 +7,8 @@
           %li= msg
 
   .field
-    = f.label :inventory_id
-    = f.text_field :inventory_id
+    = f.label :product
+    = f.text_field :product
   .field
     = f.label :quantity
     = f.number_field :quantity
@@ -16,10 +16,10 @@
     = f.label :action
     = f.check_box :action
   .field
+    = f.label :user
+    = f.text_field :user
+  .field
     = f.label :remarks
     = f.text_area :remarks
-  .field
-    = f.label :inv_date
-    = f.date_select :inv_date
   .actions
     = f.submit 'Save'

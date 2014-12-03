@@ -1,8 +1,8 @@
 %p#notice= notice
 
 %p
-  %b Invoice:
-  = @invoice.invoice_id
+  %b Patient:
+  = @invoice.patient
 %p
   %b Total amt due:
   = @invoice.total_amt_due
@@ -12,9 +12,6 @@
 %p
   %b Balance:
   = @invoice.balance
-%p
-  %b Invoice date:
-  = @invoice.invoice_date
 %p
   %b Status:
   = @invoice.status

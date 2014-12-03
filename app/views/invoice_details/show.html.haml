@@ -1,9 +1,6 @@
 %p#notice= notice
 
 %p
-  %b Invoice details:
-  = @invoice_detail.invoice_details_id
-%p
   %b Quantity:
   = @invoice_detail.quantity
 %p
@@ -14,7 +11,7 @@
   = @invoice_detail.type
 %p
   %b Type:
-  = @invoice_detail.type_id
+  = @invoice_detail.type
 
 = link_to 'Edit', edit_invoice_detail_path(@invoice_detail)
 \|

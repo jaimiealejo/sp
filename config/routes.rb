@@ -1,5 +1,8 @@
 Sp::Application.routes.draw do
   
+  resources :invoice_invoice_details
+
+
   resources :invoice_details
 
 

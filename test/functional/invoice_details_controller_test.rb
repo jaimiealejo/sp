@@ -18,7 +18,7 @@ class InvoiceDetailsControllerTest < ActionController::TestCase
 
   test "should create invoice_detail" do
     assert_difference('InvoiceDetail.count') do
-      post :create, invoice_detail: { invoice_details_id: @invoice_detail.invoice_details_id, price: @invoice_detail.price, quantity: @invoice_detail.quantity, type: @invoice_detail.type }
+      post :create, invoice_detail: { price: @invoice_detail.price, quantity: @invoice_detail.quantity, type: @invoice_detail.type }
     end
 
     assert_redirected_to invoice_detail_path(assigns(:invoice_detail))
@@ -35,7 +35,7 @@ class InvoiceDetailsControllerTest < ActionController::TestCase
   end
 
   test "should update invoice_detail" do
-    put :update, id: @invoice_detail, invoice_detail: { invoice_details_id: @invoice_detail.invoice_details_id, price: @invoice_detail.price, quantity: @invoice_detail.quantity, type: @invoice_detail.type }
+    put :update, id: @invoice_detail, invoice_detail: { price: @invoice_detail.price, quantity: @invoice_detail.quantity, type: @invoice_detail.type }
     assert_redirected_to invoice_detail_path(assigns(:invoice_detail))
   end
 
