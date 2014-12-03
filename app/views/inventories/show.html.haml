@@ -2,16 +2,13 @@
 
 %p
   %b Product:
-  = @inventory.product
+  = link_to @inventory.product.name, product_path(@inventory.product)
 %p
   %b Quantity:
   = @inventory.quantity
 %p
-  %b Action:
-  = @inventory.action
-%p
   %b User:
-  = @inventory.user
+  = @inventory.user.email
 %p
   %b Remarks:
   = @inventory.remarks

@@ -22,12 +22,21 @@ class InvoicesController < ApplicationController
 
   def create
     @invoice = Invoice.new(params[:invoice])
+    @invoice.balance = BigDecimal.new(params[:invoice][:total_amt_due]) - BigDecimal.new(params[:invoice][:amt_received])
+    @invoice.patient = Patient.find(params[:patient_id])
     @invoice.save
     respond_with(@invoice)
   end
 
   def update
-    @invoice.update_attributes(params[:invoice])
+    @balance = BigDecimal.new(params[:invoice][:total_amt_due]) - BigDecimal.new(params[:invoice][:amt_received])
+    @invoice.update_attributes(
+      total_amt_due: params[:invoice][:total_amt_due],
+      amt_received: params[:invoice][:amt_received],
+      balance: @balance,
+      patient_id: params[:patient_id],
+      status: params[:invoice][:status]
+    )
     respond_with(@invoice)
   end
 

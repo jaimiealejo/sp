@@ -13,10 +13,7 @@
     = f.label :price
     = f.text_field :price
   .field
-    = f.label :type
-    = f.text_field :type
-  .field
-    = f.label :type
-    = f.text_field :type
+    = f.label :invoice_type
+    = f.select :invoice_type, options_for_select(["Procedure", "Appointment", "Product"])
   .actions
     = f.submit 'Save'

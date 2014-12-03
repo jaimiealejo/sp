@@ -7,8 +7,9 @@
           %li= msg
 
   .field
-    = f.label :patient
-    = f.text_field :patient
+    = label_tag 'Patient'
+    = select_tag 'patient_id',
+      options_from_collection_for_select(Patient.all, 'id', 'full_name')
   .field
     = f.label :total_amt_due
     = f.text_field :total_amt_due
@@ -16,10 +17,7 @@
     = f.label :amt_received
     = f.text_field :amt_received
   .field
-    = f.label :balance
-    = f.text_field :balance
-  .field
     = f.label :status
-    = f.text_field :status
+    = f.select :status, options_for_select(["Full Payment", "Partial Payment", "Downpayment"])
   .actions
     = f.submit 'Save'

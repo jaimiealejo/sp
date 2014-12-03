@@ -13,7 +13,8 @@ class InvoiceInvoiceDetailsController < ApplicationController
   end
 
   def new
-    @invoice_invoice_detail = InvoiceInvoiceDetail.new
+    @invoice = Invoice.new
+    @invoice_detail = InvoiceDetail.new
     respond_with(@invoice_invoice_detail)
   end
 

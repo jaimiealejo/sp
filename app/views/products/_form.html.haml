@@ -10,8 +10,8 @@
     = f.label :name
     = f.text_field :name
   .field
-    = f.label :type
-    = f.check_box :type
+    = f.label :prod_type
+    = f.select :prod_type, options_for_select([["Medicine", 0], ["Dental Hygiene", 1]])
   .field
     = f.label :capital_price
     = f.text_field :capital_price

@@ -4,23 +4,22 @@
   %tr
     %th Name
     %th Type
-    %th Capital price
-    %th Selling price
+    %th Capital Price
+    %th Selling Price
     %th Info
-    %th
     %th
     %th
 
   - @products.each do |product|
     %tr
       %td= product.name
-      %td= product.type
+      %td
+        = (product.prod_type)? 'Dental Hygiene' : 'Medicine'
       %td= product.capital_price
       %td= product.selling_price
       %td= product.info
       %td= link_to 'Show', product
       %td= link_to 'Edit', edit_product_path(product)
-      %td= link_to 'Destroy', product, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

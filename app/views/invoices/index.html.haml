@@ -9,18 +9,16 @@
     %th Status
     %th
     %th
-    %th
 
   - @invoices.each do |invoice|
     %tr
-      %td= invoice.patient
+      %td= link_to invoice.patient.full_name, patient_path(invoice.patient)
       %td= invoice.total_amt_due
       %td= invoice.amt_received
       %td= invoice.balance
       %td= invoice.status
       %td= link_to 'Show', invoice
       %td= link_to 'Edit', edit_invoice_path(invoice)
-      %td= link_to 'Destroy', invoice, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

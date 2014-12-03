@@ -5,8 +5,6 @@
     %th Quantity
     %th Price
     %th Type
-    %th Type
-    %th
     %th
     %th
 
@@ -18,7 +16,6 @@
       %td= invoice_detail.type
       %td= link_to 'Show', invoice_detail
       %td= link_to 'Edit', edit_invoice_detail_path(invoice_detail)
-      %td= link_to 'Destroy', invoice_detail, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

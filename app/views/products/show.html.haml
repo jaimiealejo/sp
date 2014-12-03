@@ -5,7 +5,13 @@
   = @product.name
 %p
   %b Type:
-  = @product.type
+  -if @product.prod_type
+    Dental Hygiene
+  -else
+    Medicine
+%p
+  %b Stock available:
+  = @product.stock_available
 %p
   %b Capital price:
   = @product.capital_price

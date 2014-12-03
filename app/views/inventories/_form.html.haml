@@ -7,17 +7,15 @@
           %li= msg
 
   .field
-    = f.label :product
-    = f.text_field :product
+    = label_tag 'Product'
+    = select_tag 'product_id',
+      options_from_collection_for_select(Product.all, 'id', 'name')
   .field
     = f.label :quantity
     = f.number_field :quantity
   .field
-    = f.label :action
-    = f.check_box :action
-  .field
-    = f.label :user
-    = f.text_field :user
+    = label_tag 'User'
+    = current_user.email
   .field
     = f.label :remarks
     = f.text_area :remarks

@@ -22,12 +22,20 @@ class InventoriesController < ApplicationController
 
   def create
     @inventory = Inventory.new(params[:inventory])
+    @inventory.product = Product.find(params[:product_id])
+    @inventory.user = current_user
     @inventory.save
     respond_with(@inventory)
   end
 
   def update
-    @inventory.update_attributes(params[:inventory])
+    @inventory.update_attributes(
+      product_id: params[:product_id],
+      quantity: params[:inventory][:quantity],
+      action: params[:inventory][:action],
+      remarks: params[:inventory][:remarks],
+      user_id: current_user.id
+    )
     respond_with(@inventory)
   end
 
