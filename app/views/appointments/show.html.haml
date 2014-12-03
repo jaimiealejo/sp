@@ -8,8 +8,10 @@
   = @appointment.remarks
 %p
   %b Procedure:
-  = @appointment.procedure
-
+  = @appointment.procedure.procedure
+%p
+  %b Patient:
+  = @appointment.procedure.patient.full_name
 = link_to 'Edit', edit_appointment_path(@appointment)
 \|
 = link_to 'Back', appointments_path

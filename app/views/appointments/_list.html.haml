@@ -1,0 +1,23 @@
+%h1 Listing appointments
+
+%table
+  %tr
+    %th Sched
+    %th Patient
+    %th Remarks
+    %th Procedure
+    %th
+    %th
+
+  - appointments.each do |appointment|
+    %tr
+      %td= appointment.sched
+      %td= link_to appointment.procedure.patient.full_name, patient_path(appointment.procedure.patient)
+      %td= appointment.remarks
+      %td= appointment.procedure.procedure
+      %td= link_to 'Show', appointment
+      %td= link_to 'Edit', edit_appointment_path(appointment)
+      
+%br
+
+= link_to 'New Appointment', new_appointment_path

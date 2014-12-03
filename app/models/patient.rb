@@ -9,4 +9,8 @@ class Patient < ActiveRecord::Base
   	now = Date.today
   	return( now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1))
   end
+
+  def full_name
+  	self.first_name + " " + self.last_name
+  end
 end

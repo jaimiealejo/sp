@@ -14,11 +14,13 @@ class AppointmentsController < ApplicationController
 
   def new
     @appointment = Appointment.new
-    @appointment.sched = Date.today
+    @appointment.sched = DateTime.now
+    @appointment.procedure = Procedure.new
     respond_with(@appointment)
   end
 
   def edit
+    @appointment.sched = DateTime.parse(@appointment.sched)
   end
 
   def create
@@ -33,8 +35,18 @@ class AppointmentsController < ApplicationController
   end
 
   def update
-    @appointment.update_attributes(params[:appointment])
-    respond_with(@appointment)
+    sched = ""+params[:appointment]["sched(1i)"]+"-"+params[:appointment]["sched(2i)"]+"-"+params[:appointment]["sched(3i)"]+"T"+params[:appointment]["sched(4i)"]+":"+params[:appointment]["sched(5i)"]+"+08:00"
+    @appointment.update_attributes(
+      sched: DateTime.parse(sched),
+      remarks: params[:appointment][:remarks]
+    )
+
+    @procedure = @appointment.procedure
+    @procedure.update_attributes(
+      procedure: params[:procedure],
+      patient_id: params[:patient_id]
+    )
+    redirect_to appointment_path(@appointment)
   end
 
   private

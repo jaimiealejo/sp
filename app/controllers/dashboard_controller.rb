@@ -1,6 +1,7 @@
 class DashboardController < ApplicationController
   def index
-  	redirect_to patients_path
+  	@patients = Patient.all
+  	@appointments = Appointment.all
   end
 
 end

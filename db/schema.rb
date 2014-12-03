@@ -11,10 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141202023357) do
+ActiveRecord::Schema.define(:version => 20141203074304) do
 
   create_table "appointments", :force => true do |t|
-    t.datetime "sched"
+    t.string   "sched"
     t.text     "remarks"
     t.integer  "procedure_id"
     t.datetime "created_at",   :null => false

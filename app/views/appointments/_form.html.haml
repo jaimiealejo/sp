@@ -15,9 +15,9 @@
     = f.text_area :remarks
   .field
     = label_tag 'Procedure'
-    = text_field_tag 'procedure'
+    = text_field_tag 'procedure', @appointment.procedure.procedure
   .fields
     = label_tag 'Patient'
-    = select_tag 'patient_id', options_from_collection_for_select(Patient.all, 'id','last_name')
+    = select_tag 'patient_id', options_from_collection_for_select(Patient.all, 'id','full_name', @appointment.procedure.patient.id)
   .actions
     = f.submit 'Save'
