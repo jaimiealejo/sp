@@ -6,14 +6,14 @@
         - @invoice_detail.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
+  .field.form-group
     = f.label :quantity
-    = f.number_field :quantity
-  .field
+    = f.number_field :quantity, class: 'form-control'
+  .field.form-group
     = f.label :price
-    = f.text_field :price
-  .field
+    = f.text_field :price, class: 'form-control'
+  .field.form-group
     = f.label :invoice_type
-    = f.select :invoice_type, options_for_select(["Procedure", "Appointment", "Product"])
+    = f.select :invoice_type, options_for_select(["Procedure", "Appointment", "Product"]), class: 'form-control'
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save', class: 'btn btn-primary'

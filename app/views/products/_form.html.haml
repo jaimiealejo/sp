@@ -6,20 +6,20 @@
         - @product.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
+  .field.form-group
+    = f.label :namex
+    = f.text_field :name, class: 'form-control'
+  .field.form-group
     = f.label :prod_type
-    = f.select :prod_type, options_for_select([["Medicine", 0], ["Dental Hygiene", 1]])
-  .field
+    = f.select :prod_type, options_for_select([["Medicine", 0], ["Dental Hygiene", 1]]), class: 'form-control'
+  .field.form-group
     = f.label :capital_price
-    = f.text_field :capital_price
-  .field
+    = f.text_field :capital_price, class: 'form-control'
+  .field.form-group
     = f.label :selling_price
-    = f.text_field :selling_price
-  .field
+    = f.text_field :selling_price, class: 'form-control'
+  .field.form-group
     = f.label :info
-    = f.text_area :info
+    = f.text_area :info, class: 'form-control'
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save', class: 'btn btn-primary'

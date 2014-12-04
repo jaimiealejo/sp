@@ -6,18 +6,18 @@
         - @inventory.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
+  .field.form-group
     = label_tag 'Product'
     = select_tag 'product_id',
-      options_from_collection_for_select(Product.all, 'id', 'name')
-  .field
+      options_from_collection_for_select(Product.all, 'id', 'name'), class: 'form-control'
+  .field.form-group
     = f.label :quantity
-    = f.number_field :quantity
-  .field
+    = f.number_field :quantity, class: 'form-control'
+  .field.form-group
     = label_tag 'User'
-    = current_user.email
-  .field
+    = current_user.email, class: 'form-control'
+  .field.form-group
     = f.label :remarks
-    = f.text_area :remarks
+    = f.text_area :remarks, class: 'form-control'
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save', class: 'btn btn-primary'

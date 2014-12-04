@@ -43,3 +43,6 @@ gem 'jbuilder' #github.com/rails/jbuilder
 
 # To use debugger
 # gem 'debugger'
+
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'

@@ -1,3 +1,6 @@
-= render 'patients/list', :patients => @patients
-= render 'appointments/list', :appointments => @appointments
+.container#main-container
+  .row
+    = render 'patients/list', :patients => @patients
+  .row
+    = render 'appointments/list', :appointments => @appointments
 

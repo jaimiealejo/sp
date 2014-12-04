@@ -6,18 +6,18 @@
         - @invoice.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
+  .field.form-group
     = label_tag 'Patient'
     = select_tag 'patient_id',
-      options_from_collection_for_select(Patient.all, 'id', 'full_name')
-  .field
+      options_from_collection_for_select(Patient.all, 'id', 'full_name'), class: 'form-control'
+  .field.form-group
     = f.label :total_amt_due
-    = f.text_field :total_amt_due
-  .field
+    = f.text_field :total_amt_due, class: 'form-control'
+  .field.form-group
     = f.label :amt_received
-    = f.text_field :amt_received
-  .field
+    = f.text_field :amt_received, class: 'form-control'
+  .field.form-group
     = f.label :status
-    = f.select :status, options_for_select(["Full Payment", "Partial Payment", "Downpayment"])
+    = f.select :status, options_for_select(["Full Payment", "Partial Payment", "Downpayment"]), class: 'form-control'
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save', class: 'btn btn-primary'

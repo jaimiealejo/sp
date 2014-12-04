@@ -1,7 +1,7 @@
 %h1 Listing invoice_invoice_details
 
-%table
-  %tr
+%table.table-responsive
+  %tr.info
     %th Invoice
     %th Invoice detail
     %th Remarks
@@ -20,4 +20,4 @@
 
 %br
 
-= link_to 'New Invoice invoice detail', new_invoice_invoice_detail_path
+= link_to 'New Invoice invoice detail', new_invoice_invoice_detail_path, class: 'btn btn-primary'

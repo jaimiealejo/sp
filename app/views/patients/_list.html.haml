@@ -1,7 +1,7 @@
 %h1 Listing patients
 
-%table
-  %tr
+%table.table-responsive
+  %tr.info
     %th Last name
     %th First name
     %th Birthday
@@ -26,5 +26,4 @@
       %td= link_to 'Edit', edit_patient_path(patient)
 
 %br
-
-= link_to 'New Patient', new_patient_path
+= link_to 'New Patient', new_patient_path, class: 'btn btn-primary'

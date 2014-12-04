@@ -5,19 +5,19 @@
       %ul
         - @procedure.errors.full_messages.each do |msg|
           %li= msg 
-  .field
+  .field.form-group
     = f.label :procedure
-    = f.text_field :procedure
-  .field
+    = f.text_field :procedure, class: 'form-control'
+  .field.form-group
     = f.label :tooth_no
-    = f.text_field :tooth_no
-  .field
+    = f.text_field :tooth_no, class: 'form-control'
+  .field.form-group
     = f.label :remarks
-    = f.text_area :remarks
-  .field
+    = f.text_area :remarks, class: 'form-control'
+  .field.form-group
     = f.label :date
-    = f.date_select :date
+    = f.date_select :date, class: 'form-control'
   .field
     = hidden_field_tag :patient_id, value: @procedure.patient.id
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save', class: 'btn btn-primary'

@@ -1,7 +1,7 @@
 %h1 Listing appointments
 
-%table
-  %tr
+%table.table-responsive
+  %tr.info
     %th Sched
     %th Patient
     %th Remarks
@@ -20,4 +20,4 @@
       
 %br
 
-= link_to 'New Appointment', new_appointment_path
+= link_to 'New Appointment', new_appointment_path, class: 'btn btn-primary'

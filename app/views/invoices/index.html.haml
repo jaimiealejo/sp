@@ -1,7 +1,7 @@
 %h1 Listing invoices
 
-%table
-  %tr
+%table.table-responsive
+  %tr.info
     %th Patient
     %th Total amt due
     %th Amt received
@@ -22,4 +22,4 @@
 
 %br
 
-= link_to 'New Invoice', new_invoice_path
+= link_to 'New Invoice', new_invoice_path, class: 'btn btn-primary'
