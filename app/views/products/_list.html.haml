@@ -4,27 +4,29 @@
     = link_to ' Show Inventory', inventories_path, class: 'btn btn-default glyphicon glyphicon-list-alt'
 
 %table.table.table-hover.table-responsive#products
-  %tr.info
-    %th Name
-    %th Type
-    %th Info
-    %th Stock
-    %th Price
-    %th
+  %thead
+    %tr.info
+      %th Name
+      %th Type
+      %th Info
+      %th Stock
+      %th Price
+      %th
 
-  - products.each do |product|
-    %tr
-      %td= product.name
-      %td
-        = (product.prod_type)? 'Dental Hygiene' : 'Medicine'
-      %td= product.info
-      %td= product.stock_available
-      %td= product.selling_price
-      %td
-        %span= link_to 'Update Info', edit_product_path(product), class: 'btn btn-link btn-xs glyphicon glyphicon-pencil'
-        %span
-          \|
-        %span= link_to 'Add Inventory Stock', new_inventory_path(product_id: product.id), class: 'btn btn-link btn-xs glyphicon glyphicon-plus-sign'
+  %tbody
+    - products.each do |product|
+      %tr
+        %td= product.name
+        %td
+          = (product.prod_type)? 'Dental Hygiene' : 'Medicine'
+        %td= product.info
+        %td= product.stock_available
+        %td= product.selling_price
+        %td
+          %span= link_to 'Update Info', edit_product_path(product), class: 'btn btn-link btn-xs glyphicon glyphicon-pencil'
+          %span
+            \|
+          %span= link_to 'Add Inventory Stock', new_inventory_path(product_id: product.id), class: 'btn btn-link btn-xs glyphicon glyphicon-plus-sign'
 
 %br
 = link_to 'Add Product', new_product_path, class: 'btn btn-default glyphicon glyphicon-plus'

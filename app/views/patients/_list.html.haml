@@ -1,31 +1,33 @@
 %h2 Patients
 
 %table.table.table-hover.table-responsive#patients
-  %tr.info
-    %th Last name
-    %th First name
-    %th Birthday
-    %th Contact
-    %th Sex
-    %th Status
-    %th Occupation
-    %th
+  %thead
+    %tr.info
+      %th Last name
+      %th First name
+      %th Birthday
+      %th Contact
+      %th Sex
+      %th Status
+      %th Occupation
+      %th
 
-  - patients.each do |patient|
-    %tr
-      %td= patient.last_name
-      %td= patient.first_name
-      %td= patient.birthday
-      %td= patient.contact
-      %td
-        = (patient.sex)? 'F' : 'M'
-      %td= patient.status
-      %td= patient.occupation
-      %td
-        %span= link_to 'Show Record', patient, class: 'btn btn-link btn-xs glyphicon glyphicon-tasks'
-        %span
-          \|
-        %span=link_to 'Update Patient Info', edit_patient_path(patient), class: 'btn btn-link btn-xs glyphicon glyphicon-pencil'
+  %tbody
+    - patients.each do |patient|
+      %tr
+        %td= patient.last_name
+        %td= patient.first_name
+        %td= patient.birthday
+        %td= patient.contact
+        %td
+          = (patient.sex)? 'F' : 'M'
+        %td= patient.status
+        %td= patient.occupation
+        %td
+          %span= link_to 'Show Record', patient, class: 'btn btn-link btn-xs glyphicon glyphicon-tasks'
+          %span
+            \|
+          %span=link_to 'Update Patient Info', edit_patient_path(patient), class: 'btn btn-link btn-xs glyphicon glyphicon-pencil'
 
 %br
 = link_to 'Add Patient', new_patient_path, class: 'btn btn-default glyphicon glyphicon-plus'

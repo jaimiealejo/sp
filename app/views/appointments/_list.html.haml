@@ -1,25 +1,27 @@
 %h2 Appointments
 
 %table.table.table-hover.table-responsive#appointments
-  %tr.info
-    %th Schedule
-    %th Patient
-    %th Remarks
-    %th Procedure
-    %th
+  %thead
+    %tr.info
+      %th Schedule
+      %th Patient
+      %th Remarks
+      %th Procedure
+      %th
 
-  - appointments.each do |appointment|
-    %tr
-      %td= appointment.sched
-      %td= link_to appointment.procedure.patient.full_name, patient_path(appointment.procedure.patient)
-      %td= appointment.remarks
-      %td= appointment.procedure.procedure
-      %td
-        %span= link_to 'Change Schedule', edit_appointment_path(appointment, index:1), class: 'btn btn-link btn-xs glyphicon glyphicon-pencil'
-        - if appointment.try(:is_confirmed?)
-          %span
-            \|
-          %span= link_to 'Cancel Appointment', cancel_appointment_path(appointment, index:1), method: 'put', class: 'btn btn-link btn-xs glyphicon glyphicon-remove-sign'
+  %tbody
+    - appointments.each do |appointment|
+      %tr
+        %td= appointment.sched
+        %td= link_to appointment.procedure.patient.full_name, patient_path(appointment.procedure.patient)
+        %td= appointment.remarks
+        %td= appointment.procedure.procedure
+        %td
+          %span= link_to 'Change Schedule', edit_appointment_path(appointment, index:1), class: 'btn btn-link btn-xs glyphicon glyphicon-pencil'
+          - if appointment.try(:is_confirmed?)
+            %span
+              \|
+            %span= link_to 'Cancel Appointment', cancel_appointment_path(appointment, index:1), method: 'put', class: 'btn btn-link btn-xs glyphicon glyphicon-remove-sign'
 
 %br
 

@@ -4,20 +4,21 @@
     = link_to 'Add Inventory Data', new_inventory_path, class: 'btn btn-link btn-xs glyphicon glyphicon-plus'
     = link_to 'Back', root_path, class: 'btn btn-link btn-xs glyphicon glyphicon-arrow-left'
 
-%table.table.table-hover.table-responsive
-  %tr.info
-    %th Product
-    %th Quantity
-    %th Remarks
-    %th User
-    %th Updated At
-    %th
-
-  - @inventories.each do |inventory|
-    %tr
-      %td= link_to inventory.product.name, product_path(inventory.product)
-      %td= inventory.quantity
-      %td= inventory.remarks
-      %td= inventory.user.email
-      %td= inventory.updated_at
-      %td= link_to 'Update Info', edit_inventory_path(inventory), class: 'btn btn-link btn-xs glyphicon glyphicon-pencil'
+%table.table.table-hover.table-responsive#inventories
+  %thead
+    %tr.info
+      %th Product
+      %th Quantity
+      %th Remarks
+      %th User
+      %th Updated At
+      %th
+  %tbody
+    - @inventories.each do |inventory|
+      %tr
+        %td= link_to inventory.product.name, product_path(inventory.product)
+        %td= inventory.quantity
+        %td= inventory.remarks
+        %td= inventory.user.email
+        %td= inventory.updated_at
+        %td= link_to 'Update Info', edit_inventory_path(inventory), class: 'btn btn-link btn-xs glyphicon glyphicon-pencil'

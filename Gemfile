@@ -1,9 +1,10 @@
 source 'https://rubygems.org'
 
-gem 'pg' #postgresql gem 
+gem 'pg' #postgresql gem
 gem 'haml-rails', '~> 0.4.0' #github.com/indirect/haml-rails
 gem 'pundit' #authorization: github.com/elabs/pundit
 gem 'jquery-datatables-rails', '~> 3.1.0' #github.com/rweng/jquery-datatables-rails
+gem 'jquery-ui-rails'
 gem 'will_paginate'
 gem 'devise'
 
