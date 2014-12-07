@@ -1,7 +1,6 @@
-%h1 Editing product
-
-= render 'form'
-
-= link_to 'Show', @product
-\|
-= link_to 'Back', products_path
+%h3
+  Update product
+  %span.actions
+    = link_to 'Cancel', root_path, class: 'btn btn-link btn-xs glyphicon glyphicon-remove-circle'
+.container
+  = render 'form'

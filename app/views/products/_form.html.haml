@@ -7,10 +7,10 @@
           %li= msg
 
   .field.form-group
-    = f.label :namex
+    = f.label :name
     = f.text_field :name, class: 'form-control'
   .field.form-group
-    = f.label :prod_type
+    = f.label 'Product Type'
     = f.select :prod_type, options_for_select([["Medicine", 0], ["Dental Hygiene", 1]]), class: 'form-control'
   .field.form-group
     = f.label :capital_price
@@ -20,6 +20,6 @@
     = f.text_field :selling_price, class: 'form-control'
   .field.form-group
     = f.label :info
-    = f.text_area :info, class: 'form-control'
+    = f.text_area :info, rows: 4, class: 'form-control'
   .actions
     = f.submit 'Save', class: 'btn btn-primary'

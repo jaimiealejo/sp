@@ -1,7 +1,7 @@
-%h1 Editing inventory
+%h3
+  Update inventory
+  %span.actions
+    = link_to 'Cancel', root_path, class: 'btn btn-link btn-xs glyphicon glyphicon-remove-circle'
 
-= render 'form'
-
-= link_to 'Show', @inventory
-\|
-= link_to 'Back', inventories_path
+.container
+  = render 'form'

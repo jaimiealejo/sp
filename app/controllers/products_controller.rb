@@ -23,12 +23,12 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(params[:product])
     @product.save
-    respond_with(@product)
+    redirect_to root_path(anchor: 'products')
   end
 
   def update
     @product.update_attributes(params[:product])
-    respond_with(@product)
+    redirect_to root_path(anchor: 'products')
   end
 
   def destroy

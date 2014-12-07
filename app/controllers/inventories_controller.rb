@@ -4,7 +4,7 @@ class InventoriesController < ApplicationController
   respond_to :html
 
   def index
-    @inventories = Inventory.all
+    @inventories = Inventory.all.sort_by &:updated_at
     respond_with(@inventories)
   end
 
@@ -14,6 +14,7 @@ class InventoriesController < ApplicationController
 
   def new
     @inventory = Inventory.new
+    @inventory.product = Product.find(params[:product_id])
     respond_with(@inventory)
   end
 
@@ -25,7 +26,7 @@ class InventoriesController < ApplicationController
     @inventory.product = Product.find(params[:product_id])
     @inventory.user = current_user
     @inventory.save
-    respond_with(@inventory)
+    redirect_to inventories_path
   end
 
   def update
@@ -36,7 +37,7 @@ class InventoriesController < ApplicationController
       remarks: params[:inventory][:remarks],
       user_id: current_user.id
     )
-    respond_with(@inventory)
+    redirect_to inventories_path
   end
 
   def destroy
