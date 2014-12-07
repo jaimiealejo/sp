@@ -9,7 +9,7 @@
   .field.form-group
     = label_tag 'Product'
     = select_tag 'product_id',
-      options_from_collection_for_select(Product.all, 'id', 'name', @inventory.try(:product).try(:id)), class: 'form-control'
+      options_from_collection_for_select(Product.all.sort_by(&:name), 'id', 'name', @inventory.try(:product).try(:id)), class: 'form-control'
   .field.form-group
     = f.label :quantity
     = f.number_field :quantity, class: 'form-control'

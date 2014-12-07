@@ -14,7 +14,7 @@ class InventoriesController < ApplicationController
 
   def new
     @inventory = Inventory.new
-    @inventory.product = Product.find(params[:product_id])
+    @inventory.product = Product.find(params[:product_id]) if params[:product_id]
     respond_with(@inventory)
   end
 
