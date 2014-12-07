@@ -18,6 +18,6 @@
     = text_field_tag 'procedure', @appointment.procedure.procedure, class: 'form-control'
   .fields.form-group
     = label_tag 'Patient'
-    = select_tag 'patient_id', options_from_collection_for_select(Patient.all, 'id','full_name', @appointment.procedure.patient.id), class: 'form-control'
+    = select_tag 'patient_id', options_from_collection_for_select(Patient.all, 'id','full_name', @appointment.procedure.try(:patient).try(:id)), class: 'form-control'
   .actions
     = f.submit 'Save', class: 'btn btn-primary'
