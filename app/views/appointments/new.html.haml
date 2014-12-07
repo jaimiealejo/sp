@@ -1,5 +1,12 @@
-%h1 New appointment
+- if @procedure.patient
+  = render 'patients/show', :patient => @procedure.patient
+  %hr
+  .pull-right.actions
+    = link_to 'Show Record', @procedure.patient, class: 'btn btn-link btn-xs glyphicon glyphicon-tasks'
+%h3
+  Set Appointment
+  %span.actions
+    = link_to 'Cancel', root_path, class: 'btn btn-link btn-xs glyphicon glyphicon-remove-circle'
+.container
+  = render 'form'
 
-= render 'form'
-
-= link_to 'Back', appointments_path, class: 'btn btn-link'

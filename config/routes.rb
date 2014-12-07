@@ -1,5 +1,5 @@
 Sp::Application.routes.draw do
-  
+
   resources :invoice_invoice_details
 
 
@@ -25,5 +25,6 @@ Sp::Application.routes.draw do
 
   devise_for :users
 
- root :to => 'dashboard#index'
+  put '/appointments/:id/cancel', to: 'appointments#cancel', as: 'cancel_appointment'
+  root :to => 'dashboard#index'
 end

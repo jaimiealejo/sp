@@ -1,5 +1,7 @@
-%h1 New patient
-
+%h3
+  Add Patient
+  %span.actions
+    = link_to 'Cancel', root_path, class: 'btn btn-link btn-xs glyphicon glyphicon-remove-circle'
 = render 'form'
 
-= link_to 'Back', patients_path, class: 'btn btn-link'
+

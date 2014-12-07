@@ -7,16 +7,28 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<p class="navbar-text pull-right">
-<% if user_signed_in? %>
- Logged in as <strong><%= current_user.email %></strong>.
- <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
- <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-<% else %>
- <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
- <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-<% end %>
-</p>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <header>
+      	<h4>Dental System
+        <a class="nav-bar-brand btn btn-link" href="/"><span class="glyphicon glyphicon-home"></span></a></h4>
+      </header>
+    </div>
+    <div class="collapse navbar-collapse">
+      <p class="navbar-text pull-right">
+        <% if user_signed_in? %>
+	        Logged in as <strong><%= current_user.email %></strong>.
+          <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link btn btn-link btn-xs' %> |
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link btn btn-link btn-xs'  %>
+        <% else %>
+          <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link btn btn-link btn-xs'  %> |
+          <%= link_to "Login", new_user_session_path, :class => 'navbar-link btn btn-link btn-xs'  %>
+        <% end %>
+      </p>
+    </div>
+  </div>
+</nav>
 <% if notice %>
  <p class="alert alert-success"><%= notice %></p>
 <% end %>
@@ -24,7 +36,9 @@
  <p class="alert alert-danger"><%= alert %></p>
 <% end %>
 
-<%= yield %>
+<div class="container">
+  <%= yield %>
+</div>
 
 </body>
 </html>

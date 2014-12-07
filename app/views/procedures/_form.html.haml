@@ -4,7 +4,7 @@
       %h2= "#{pluralize(@procedure.errors.count, "error")} prohibited this procedure from being saved:"
       %ul
         - @procedure.errors.full_messages.each do |msg|
-          %li= msg 
+          %li= msg
   .field.form-group
     = f.label :procedure
     = f.text_field :procedure, class: 'form-control'
@@ -13,7 +13,7 @@
     = f.text_field :tooth_no, class: 'form-control'
   .field.form-group
     = f.label :remarks
-    = f.text_area :remarks, class: 'form-control'
+    = f.text_area :remarks, rows: 4, class: 'form-control'
   .field.form-group
     = f.label :date
     = f.date_select :date, class: 'form-control'

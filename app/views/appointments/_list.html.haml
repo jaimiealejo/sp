@@ -1,12 +1,11 @@
-%h1 Listing appointments
+%h2 Appointments
 
-%table.table-responsive
+%table.table.table-hover.table-responsive#appointments
   %tr.info
-    %th Sched
+    %th Schedule
     %th Patient
     %th Remarks
     %th Procedure
-    %th
     %th
 
   - appointments.each do |appointment|
@@ -15,9 +14,13 @@
       %td= link_to appointment.procedure.patient.full_name, patient_path(appointment.procedure.patient)
       %td= appointment.remarks
       %td= appointment.procedure.procedure
-      %td= link_to 'Show', appointment
-      %td= link_to 'Edit', edit_appointment_path(appointment)
-      
+      %td
+        %span= link_to 'Change Schedule', edit_appointment_path(appointment, index:1), class: 'btn btn-link btn-xs glyphicon glyphicon-pencil'
+        - if appointment.try(:is_confirmed?)
+          %span
+            \|
+          %span= link_to 'Cancel Appointment', cancel_appointment_path(appointment, index:1), method: 'put', class: 'btn btn-link btn-xs glyphicon glyphicon-remove-sign'
+
 %br
 
-= link_to 'New Appointment', new_appointment_path, class: 'btn btn-primary'
+= link_to 'Set Appointment', new_appointment_path(index:1), class: 'btn btn-default glyphicon glyphicon-plus'

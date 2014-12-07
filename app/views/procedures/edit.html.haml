@@ -1,5 +1,12 @@
-%h1 Editing procedure
+= render 'patients/show', :patient => @procedure.patient
+%hr
+.pull-right.actions
+  = link_to 'Show Record', @procedure.patient, class: 'btn btn-link btn-xs glyphicon glyphicon-tasks'
 
-= render 'form'
+%h3
+  Update procedure
+  %span.actions
+    = link_to 'Cancel', root_path, class: 'btn btn-link btn-xs glyphicon glyphicon-remove-circle'
 
-= link_to 'Back', patient_procedures_path
+.container
+  = render 'form'

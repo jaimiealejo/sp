@@ -5,6 +5,13 @@
       %ul
         - @appointment.errors.full_messages.each do |msg|
           %li= msg
+  .fields.form-group
+    = label_tag 'Patient'
+    = select_tag 'patient_id', options_from_collection_for_select(Patient.all.sort_by(&:last_name), 'id','full_name', @appointment.procedure.try(:patient).try(:id)), class: 'form-control'
+
+  .field.form-group
+    = label_tag 'Procedure'
+    = text_field_tag 'procedure', @appointment.procedure.procedure, class: 'form-control'
 
   .field.form-group
     = f.label :sched
@@ -12,12 +19,8 @@
 
   .field.form-group
     = f.label :remarks
-    = f.text_area :remarks, class: 'form-control'
-  .field.form-group
-    = label_tag 'Procedure'
-    = text_field_tag 'procedure', @appointment.procedure.procedure, class: 'form-control'
-  .fields.form-group
-    = label_tag 'Patient'
-    = select_tag 'patient_id', options_from_collection_for_select(Patient.all, 'id','full_name', @appointment.procedure.try(:patient).try(:id)), class: 'form-control'
+    = f.select :remarks, options_for_select(["Follow Up", "Confirmed", "Cancelled"]), value: @appointment.remarks, class: 'form-control'
+
   .actions
+    = hidden_field_tag 'index', @index
     = f.submit 'Save', class: 'btn btn-primary'

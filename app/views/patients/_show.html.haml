@@ -1,27 +1,29 @@
-%p
-  %b Last name:
-  = patient.last_name
-%p
-  %b First name:
-  = patient.first_name
-%p
-  %b Birthday:
-  = patient.birthday
-%p
-  %b Age:
-  = Patient.compute_age(patient.birthday)
-%p
-  %b Contact:
-  = patient.contact
-%p
-  %b Sex:
-  -if patient.sex
-    F
-  -else
-    M
-%p
-  %b Status:
-  = patient.status
-%p
-  %b Occupation:
-  = patient.occupation
+.container-fluid
+  .pull-right
+    %span=link_to 'Update Patient Info', edit_patient_path(patient), class: 'btn btn-link btn-xs glyphicon glyphicon-pencil'
+  %h3.name
+    = patient.full_name
+
+  .row
+    .col-xs-3
+      %b Sex:
+      -if patient.sex
+        F
+      -else
+        M
+    .col-xs-3
+      %b Status:
+      = patient.status
+    .col-xs-3
+      %b Contact:
+      = patient.contact
+  .row
+    .col-xs-3
+      %b Birthday:
+      = patient.birthday
+    .col-xs-3
+      %b Age:
+      = Patient.compute_age(patient.birthday)
+    .col-xs-3
+      %b Occupation:
+      = patient.occupation

@@ -1,7 +1,7 @@
-%h1 Editing patient
+%h3
+  Update Patient Info
+.actions
+  = link_to 'Show Record', @patient, class: 'btn btn-link btn-xs glyphicon glyphicon-tasks'
 
+  = link_to 'Back', root_path, class: 'btn btn-link btn-xs glyphicon glyphicon-arrow-left'
 = render 'form'
-
-= link_to 'Show', @patient
-\|
-= link_to 'Back', patients_path

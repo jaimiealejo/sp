@@ -1,6 +1,6 @@
-%h1 Listing patients
+%h2 Patients
 
-%table.table-responsive
+%table.table.table-hover.table-responsive#patients
   %tr.info
     %th Last name
     %th First name
@@ -9,7 +9,6 @@
     %th Sex
     %th Status
     %th Occupation
-    %th
     %th
 
   - patients.each do |patient|
@@ -22,8 +21,11 @@
         = (patient.sex)? 'F' : 'M'
       %td= patient.status
       %td= patient.occupation
-      %td= link_to 'Show', patient
-      %td= link_to 'Edit', edit_patient_path(patient)
+      %td
+        %span= link_to 'Show Record', patient, class: 'btn btn-link btn-xs glyphicon glyphicon-tasks'
+        %span
+          \|
+        %span=link_to 'Update Patient Info', edit_patient_path(patient), class: 'btn btn-link btn-xs glyphicon glyphicon-pencil'
 
 %br
-= link_to 'New Patient', new_patient_path, class: 'btn btn-primary'
+= link_to 'Add Patient', new_patient_path, class: 'btn btn-default glyphicon glyphicon-plus'

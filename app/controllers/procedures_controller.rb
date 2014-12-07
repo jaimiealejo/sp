@@ -4,7 +4,7 @@ class ProceduresController < ApplicationController
   respond_to :html
 
   def index
-    @procedures = Procedure.all
+    @procedures = Procedure.all.sort_by &:id
     respond_with(@procedures)
   end
 

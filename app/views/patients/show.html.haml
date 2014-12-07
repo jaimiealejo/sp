@@ -1,11 +1,14 @@
 %p#notice= notice
 
 = render 'show', :patient => @patient
+%hr
+.action.pull-right.panel
+  = link_to 'Add Procedure', new_patient_procedure_path(@patient.id), class: 'glyphicon glyphicon-plus btn btn-link btn-xs'
+  \|
+  = link_to 'Set Appointment', new_appointment_path(patient: @patient.id), class: 'glyphicon glyphicon-plus btn btn-link btn-xs'
 
+.row
+  = render 'procedures/list', :procedures => @procedures.sort_by(&:id).reverse, :patient_id => @patient.id
 
-= link_to 'Edit', edit_patient_path(@patient)
-
-= render 'procedures/list', :procedures => @procedures, :patient_id => @patient.id
-
-= link_to 'Back', patients_path
+= link_to 'Back', root_path, class: 'btn btn-default'
 

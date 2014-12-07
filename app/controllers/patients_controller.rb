@@ -1,6 +1,5 @@
 class PatientsController < ApplicationController
   before_filter :set_patient, only: [:show, :edit, :update, :destroy]
-
   respond_to :html
 
   def index

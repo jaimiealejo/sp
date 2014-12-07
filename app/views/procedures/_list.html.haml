@@ -1,25 +1,34 @@
-%h1 Listing procedures
-= link_to 'Add', new_patient_procedure_path(patient_id)
-
-
-%table
-  %tr
+%table.table.table-hover.table-responsive
+  %tr.info
     %th Procedure
     %th Tooth no
-    %th Remarks
-    %th Procedure Date
-    %th Appointment Schedule
+    %th
+      Procedure Date/
+      %br
+      Remarks
+    %th
+      Appointment Schedule/
+      %br
+      Remarks
     %th
 
 
   - procedures.each do |procedure|
-    %tr
-      %td= procedure.procedure
-      %td= procedure.tooth_no
-      %td= procedure.remarks
-      %td= procedure.date
-      %td= Appointment.where(procedure_id: procedure.id).first.try(:sched)
-      %td= link_to 'Edit', edit_patient_procedure_path(patient_id, procedure)
-
-%br
-
+    - appointment = Appointment.where(procedure_id: procedure.id).first
+    - if !appointment || appointment.remarks != 'Cancelled'
+      %tr
+        %td= procedure.procedure
+        %td= procedure.tooth_no
+        %td
+          = procedure.date
+          %br
+          = procedure.remarks
+        %td
+          = appointment.try(:sched)
+          %br
+          = appointment.try(:remarks)
+        %td
+          = link_to 'Update', edit_patient_procedure_path(patient_id, procedure), class: 'btn btn-link btn-xs glyphicon glyphicon-pencil'
+          - if appointment.try(:is_confirmed?)
+            %br
+            = link_to 'Cancel Appointment', cancel_appointment_path(appointment), method: 'put', class: 'btn btn-link btn-xs glyphicon glyphicon-remove-sign'

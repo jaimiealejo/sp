@@ -5,6 +5,17 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :role_id
   # attr_accessible :title, :body
+  belongs_to :role
+  before_create :set_default_role
+
+  def is_admin?
+  	return self.role.name == 'admin'
+  end
+
+  private
+  def set_default_role
+  	self.role ||= Role.where(name: 'secretary').first
+  end
 end

@@ -1,7 +1,8 @@
-%h1 Editing appointment
+%h3
+  Update appointment
+.actions
+  = link_to 'Show Record', @appointment.procedure.try(:patient), class: 'btn btn-link btn-xs glyphicon glyphicon-tasks'
 
-= render 'form'
-
-= link_to 'Show', @appointment
-\|
-= link_to 'Back', appointments_path
+  = link_to 'Back', root_path, class: 'btn btn-link btn-xs glyphicon glyphicon-arrow-left'
+.container
+  = render 'form'
