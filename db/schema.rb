@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141207050007) do
+ActiveRecord::Schema.define(:version => 20141209115026) do
 
   create_table "appointments", :force => true do |t|
     t.string   "sched"
@@ -40,12 +40,14 @@ ActiveRecord::Schema.define(:version => 20141207050007) do
     t.integer  "quantity"
     t.decimal  "price"
     t.string   "invoice_type"
-    t.integer  "type_id"
+    t.integer  "procedure_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.integer  "product_id"
+    t.integer  "invoice_id"
   end
 
-  add_index "invoice_details", ["type_id"], :name => "index_invoice_details_on_type_id"
+  add_index "invoice_details", ["procedure_id"], :name => "index_invoice_details_on_type_id"
 
   create_table "invoice_invoice_details", :force => true do |t|
     t.integer  "invoice_id"

@@ -13,7 +13,7 @@
 %hr
 
 .action.pull-right.panel
-  = link_to 'Create Invoice', new_invoice_path(patient_id:@patient.id), class: 'glyphicon glyphicon-plus btn btn-link btn-xs'
+  = link_to 'Generate Invoice', generate_invoice_path(@patient.id), class: 'glyphicon glyphicon-plus btn btn-link btn-xs'
 
 .row
   = render 'invoices/list', :invoices => @patient.try(:invoices)

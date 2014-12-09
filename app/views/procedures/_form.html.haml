@@ -17,7 +17,12 @@
   .field.form-group
     = f.label :date
     = f.date_select :date, class: 'form-control'
+  .field.form-group
+    -if @invoice_detail
+      = hidden_field_tag :invoice_detail_id, @invoice_detail.id
+    = label_tag 'Price'
+    = text_field_tag 'price',@invoice_detail.try(:price), class: 'form-control'
   .field
-    = hidden_field_tag :patient_id, value: @procedure.patient.id
+    = hidden_field_tag :patient_id, @procedure.patient.id
   .actions
     = f.submit 'Save', class: 'btn btn-primary'

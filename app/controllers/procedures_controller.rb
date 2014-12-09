@@ -16,21 +16,34 @@ class ProceduresController < ApplicationController
     @procedure = Procedure.new
     @patient = Patient.find(params[:patient_id])
     @procedure.patient = @patient
+    @invoice_detail = InvoiceDetail.new
   end
 
   def edit
     @patient = Patient.find(params[:patient_id])
+    @invoice_detail = @procedure.invoice_detail
   end
 
   def create
     @procedure = Procedure.new(params[:procedure])
     @procedure.patient = Patient.find(params[:patient_id])
+
+    @invoice_detail = InvoiceDetail.new
+    @invoice_detail.price = BigDecimal.new(params[:price])
+    @invoice_detail.quantity = 1
+    @invoice_detail.invoice_type = 'Procedure'
+    @invoice_detail.save
+
+    @procedure.invoice_detail = @invoice_detail
     @procedure.save
+
     redirect_to patient_path(@procedure.patient)
   end
 
   def update
     @procedure.update_attributes(params[:procedure])
+    @invoice_detail = @procedure.invoice_detail || InvoiceDetail.new(procedure_id: @procedure.id)
+    @invoice_detail.update_attributes(price: BigDecimal.new(params[:price]))
     redirect_to patient_path(@procedure.patient)
   end
 

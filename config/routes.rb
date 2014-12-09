@@ -26,5 +26,6 @@ Sp::Application.routes.draw do
   devise_for :users
 
   put '/appointments/:id/cancel', to: 'appointments#cancel', as: 'cancel_appointment'
+  get '/invoice/:id/generate', to: 'invoices#generate', as: 'generate_invoice'
   root :to => 'dashboard#index'
 end

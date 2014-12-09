@@ -10,6 +10,7 @@
       Appointment Schedule/
       %br
       Remarks
+    %th Invoice Price
     %th
 
 
@@ -27,6 +28,8 @@
           = appointment.try(:sched)
           %br
           = appointment.try(:remarks)
+        %td
+          = procedure.try(:invoice_detail).try(:price)
         %td
           = link_to 'Update', edit_patient_procedure_path(patient_id, procedure), class: 'btn btn-link btn-xs glyphicon glyphicon-pencil'
           - if appointment.try(:is_confirmed?)
