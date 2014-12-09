@@ -13,3 +13,7 @@ jQuery ->
   $('#products').dataTable
     sPaginationType: "full_numbers"
     bJQueryUI: true
+
+  $('#invoices').dataTable
+    sPaginationType: "full_numbers"
+    bJQueryUI: true

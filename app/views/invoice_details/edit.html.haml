@@ -1,7 +1,15 @@
-%h1 Editing invoice_detail
+= render 'patients/show', :patient => @patient
+%hr
+.pull-right.actions
+  = link_to 'Show Record', @patient, class: 'btn btn-link btn-xs glyphicon glyphicon-tasks'
+
+%h3
+  -if @procedure
+    = link_to @procedure.procedure, edit_patient_procedure_path(@patient.id, @procedure), class: 'btn btn-link btn-lg glyphicon glyphicon-pencil'
+  -else
+    =link_to @product.name_and_price, edit_product_path(@product), class: 'btn btn-link btn-lg glyphicon glyphicon-pencil'
+  %span.actions
+    = link_to 'Back to Invoice', edit_invoice_path(@invoice), class: 'btn btn-link btn-xs glyphicon glyphicon-remove-circle'
+
 
 = render 'form'
-
-= link_to 'Show', @invoice_detail
-\|
-= link_to 'Back', invoice_details_path

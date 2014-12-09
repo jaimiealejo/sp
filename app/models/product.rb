@@ -6,4 +6,8 @@ class Product < ActiveRecord::Base
   def stock_available
     Inventory.where(product_id:self.id).sum(:quantity)
   end
+
+  def name_and_price
+  	self.name + ' - ' + self.selling_price.to_s
+  end
 end

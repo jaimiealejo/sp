@@ -1,13 +1,17 @@
 %table.table.table-hover.table-responsive
   %tr.info
-    %th Procedure
+    %th Item/Service
     %th Price
     %th Quantity
     %th
 
   - invoice_details.each do |invoice_detail|
     %tr
-      %td= Procedure.find(invoice_detail.procedure_id).procedure
-      %td= invoice_detail.quantity
+      %td
+        -if invoice_detail.procedure_id
+          = Procedure.find(invoice_detail.procedure_id).procedure
+        -else
+          = Product.find(invoice_detail.product_id).name_and_price
       %td= invoice_detail.price
-      %td= link_to 'Edit', edit_invoice_detail_path(invoice_detail)
+      %td= invoice_detail.quantity
+      %td= link_to 'Edit', edit_invoice_detail_path(invoice_detail), class: 'btn btn-link btn-xs glyphicon glyphicon-pencil'

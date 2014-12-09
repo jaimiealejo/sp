@@ -19,6 +19,7 @@ class InvoicesController < ApplicationController
   end
 
   def edit
+    @invoice.compute_total_amt_due
   end
 
   def create

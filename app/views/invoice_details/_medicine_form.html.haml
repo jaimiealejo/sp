@@ -10,10 +10,12 @@
     = f.label :quantity
     = f.number_field :quantity, class: 'form-control'
   .field.form-group
-    = f.label :price
-    = f.text_field :price, class: 'form-control'
+    = label_tag 'Product'
+    = select_tag 'product_id',
+      options_from_collection_for_select(Product.all.sort_by(&:name), 'id', 'name_and_price', @inventory.try(:product).try(:id)), class: 'form-control'
   .field.form-group
     = f.label :invoice_type
     = f.select :invoice_type, options_for_select(["Procedure", "Appointment", "Product"], @invoice_detail.invoice_type), class: 'form-control'
   .actions
+    = hidden_field_tag 'patient_id', patient_id
     = f.submit 'Save', class: 'btn btn-primary'
