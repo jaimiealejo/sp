@@ -1,0 +1,29 @@
+%h2 Invoices
+
+%table.table.table-hover.table-responsive#invoices
+  %thead
+    %tr.info
+      %th Patient
+      %th Total amt due
+      %th Amt received
+      %th Balance
+      %th Status
+      %th
+      %th
+
+  %tbody
+    - invoices.each do |invoice|
+      %tr
+        %td= link_to invoice.patient.full_name, patient_path(invoice.patient)
+        %td= invoice.total_amt_due
+        %td= invoice.amt_received
+        %td= invoice.balance
+        %td= invoice.status
+        %td
+          %span= link_to 'Show Invoice', invoice, class: 'btn btn-link btn-xs glyphicon glyphicon-tasks'
+          %span
+            \|
+          %span=link_to 'Update Invoice', edit_invoice_path(invoice), class: 'btn btn-link btn-xs glyphicon glyphicon-pencil'
+
+%br
+= link_to 'Add Invoice', new_invoice_path, class: 'btn btn-default glyphicon glyphicon-plus'
