@@ -14,6 +14,7 @@ class InvoicesController < ApplicationController
 
   def new
     @invoice = Invoice.new
+    @invoice.patient = Patient.find(params[:patient_id]) if params[:patient_id]
     respond_with(@invoice)
   end
 

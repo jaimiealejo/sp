@@ -1,5 +1,12 @@
-%h1 New invoice
+- if @invoice.patient
+  = render 'patients/show', :patient => @invoice.patient
+  %hr
+  .pull-right.actions
+    = link_to 'Show Record', @invoice.patient, class: 'btn btn-link btn-xs glyphicon glyphicon-tasks'
+%h3
+  Create invoice
+  %span.actions
+    = link_to 'Cancel', root_path, class: 'btn btn-link btn-xs glyphicon glyphicon-remove-circle'
+.container
+  = render 'form'
 
-= render 'form'
-
-= link_to 'Back', invoices_path, class: 'btn btn-link'

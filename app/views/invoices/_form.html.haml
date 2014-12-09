@@ -9,7 +9,7 @@
   .field.form-group
     = label_tag 'Patient'
     = select_tag 'patient_id',
-      options_from_collection_for_select(Patient.all, 'id', 'full_name'), class: 'form-control'
+      options_from_collection_for_select(Patient.all, 'id', 'full_name', @invoice.patient.id), class: 'form-control'
   .field.form-group
     = f.label :total_amt_due
     = f.text_field :total_amt_due, class: 'form-control'

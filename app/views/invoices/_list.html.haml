@@ -1,0 +1,21 @@
+%h3 Invoices
+
+%table.table.table-hover.table-responsive#invoices
+  %tr.info
+    %th Total amt due
+    %th Amt received
+    %th Balance
+    %th Status
+    %th Last Updated
+    %th
+
+  - invoices.each do |invoice|
+    %tr
+      %td= invoice.total_amt_due
+      %td= invoice.amt_received
+      %td= invoice.balance
+      %td= invoice.status
+      %td= invoice.updated_at
+      %td= link_to 'Edit', edit_invoice_path(invoice)
+
+%br
