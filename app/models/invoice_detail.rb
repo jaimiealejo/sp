@@ -2,7 +2,7 @@ class InvoiceDetail < ActiveRecord::Base
   belongs_to :type
   attr_accessible :price, :quantity, :invoice_type, :product_id, :procedure_id
   before_save :compute_price
-  after_save :update_inventory
+  after_create :update_inventory
 
   def compute_price
   	if self.product_id

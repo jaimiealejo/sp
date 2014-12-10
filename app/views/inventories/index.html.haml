@@ -19,6 +19,6 @@
         %td= link_to inventory.product.name, product_path(inventory.product)
         %td= inventory.quantity
         %td= inventory.remarks
-        %td= inventory.user.email
+        %td= inventory.try(:user).try(:email)
         %td= inventory.updated_at
         %td= link_to 'Update Info', edit_inventory_path(inventory), class: 'btn btn-link btn-xs glyphicon glyphicon-pencil'
