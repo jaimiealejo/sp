@@ -28,15 +28,20 @@ class InvoiceDetailsController < ApplicationController
   def create
     @invoice_detail = InvoiceDetail.new(params[:invoice_detail])
     @invoice_detail.product_id = params[:product_id]
-    @invoice_detail.save
 
-    @invoice = Invoice.new
-    @invoice.patient = Patient.find(params[:patient_id]) if params[:patient_id]
-    @invoice.invoice_details << @invoice_detail
-    @invoice.compute_total_amt_due
-    @invoice.save
+    if @invoice_detail.valid?
+      @invoice_detail.save
 
-    redirect_to edit_invoice_path(@invoice)
+      @invoice = Invoice.new
+      @invoice.patient = Patient.find(params[:patient_id]) if params[:patient_id]
+      @invoice.invoice_details << @invoice_detail
+      @invoice.compute_total_amt_due
+      @invoice.save
+
+      redirect_to edit_invoice_path(@invoice)
+    end
+
+    respond_with(@invoice_detail)
   end
 
   def update
