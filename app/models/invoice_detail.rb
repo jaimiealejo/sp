@@ -2,7 +2,7 @@ class InvoiceDetail < ActiveRecord::Base
   belongs_to :type
   attr_accessible :price, :quantity, :invoice_type, :product_id, :procedure_id
   before_save :compute_price
-  after_create :update_inventory
+  after_create :create_inventory
 
   def compute_price
   	if self.product_id
@@ -11,7 +11,7 @@ class InvoiceDetail < ActiveRecord::Base
     end
   end
 
-  def update_inventory
+  def create_inventory
     if self.product_id
     	product = Product.find(self.product_id)
     	inventory = Inventory.new
