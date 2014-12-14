@@ -10,7 +10,7 @@ class InvoiceDetail < ActiveRecord::Base
       product = Product.find(self.product_id)
       stock = product.stock_available
       if (stock < self.quantity)
-        errors.add(:quantity, "Only #{stock} left")
+        errors.add(:quantity, "Only #{stock} left of #{product.name}")
       end
     end
   end
