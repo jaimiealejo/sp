@@ -1,15 +1,27 @@
 .container#main-container
-  .row
-    = render 'patients/list', :patients => @patients
-  .row
-    %hr
-  .row
-    = render 'appointments/list', :appointments => @appointments
-  .row
-    %hr
-  .row
-    = render 'products/list', :products => @products
-  .row
-    %hr
-  .row
-    = render 'invoices/list', :invoices => @invoices
+  %ul.nav.nav-tabs.padding-18
+    %li.active
+      %a{:href=> '#patients-container', 'data-toggle' => 'tab'}
+        %h4 Patients
+    %li
+      %a{:href=> '#appointments-container', 'data-toggle' => 'tab'}
+        %h4 Appointments
+    %li
+      %a{:href=> '#products-container', 'data-toggle' => 'tab'}
+        %h4 Products
+    %li
+      %a{:href=> '#invoices-container', 'data-toggle' => 'tab'}
+        %h4 Invoices
+  .tab-content
+    #patients-container.tab-pane.in.active
+      .row-fluid
+        = render 'patients/list', :patients => @patients
+    #appointments-container.tab-pane
+      .row-fluid
+        = render 'appointments/list', :appointments => @appointments
+    #products-container.tab-pane
+      .row-fluid
+        = render 'products/list', :products => @products
+    #invoices-container.tab-pane
+      .row-fluid
+        = render 'invoices/list', :invoices => @invoices
