@@ -10,5 +10,5 @@
 end
 
 # User with ID 1 is always admin (role_id 3)
-user = User.find(1)
+user = User.find(3)
 user.update_attributes(role_id:3) if user.role_id != 3
