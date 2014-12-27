@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
   	return self.role.name == 'admin'
   end
 
+  def is_secretary?
+    return self.role.name == 'secretary'
+  end
+
   private
   def set_default_role
   	self.role ||= Role.where(name: 'secretary').first

@@ -9,7 +9,7 @@
   %span.actions
     = link_to 'Cancel', root_path, class: 'btn btn-link btn-xs glyphicon glyphicon-remove-circle'
 
-.containter-fluid
+.container-fluid
   %h4 Invoice Details
   = render 'invoice_details/list', :invoice_details => @invoice.invoice_details
   = render 'form'

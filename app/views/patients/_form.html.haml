@@ -20,10 +20,11 @@
     = f.text_field :contact, class: 'form-control'
   .field.form-group
     = f.label :sex
-    = f.select :sex, options_for_select([["M", 0], ["F", 1]]), class: 'form-control'
+    - sex = @patient.sex ? ["F", 1] : ["M", 0]
+    = f.select :sex, options_for_select([["M", 0], ["F", 1]], sex), class: 'form-control'
   .field.form-group
     = f.label :status
-    = f.select :status, options_for_select(["Single", "Married", "Widowed", "Separated"]), class: 'form-control'
+    = f.select :status, options_for_select(["Single", "Married", "Widowed", "Separated"], @patient.status), class: 'form-control'
   .field.form-group
     = f.label :occupation
     = f.text_field :occupation, class: 'form-control'

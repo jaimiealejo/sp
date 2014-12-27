@@ -11,10 +11,16 @@
     = f.text_field :name, class: 'form-control'
   .field.form-group
     = f.label 'Product Type'
-    = f.select :prod_type, options_for_select([["Medicine", 0], ["Dental Hygiene", 1]]), class: 'form-control'
-  .field.form-group
-    = f.label :capital_price
-    = f.text_field :capital_price, class: 'form-control'
+    - prod_type = @product.prod_type ? ["Dental Hygiene", 1] : ["Medicine", 0]
+    = f.select :prod_type, options_for_select([["Medicine", 0], ["Dental Hygiene", 1]], prod_type), class: 'form-control'
+  - if current_user.is_secretary?
+    .field.form-group.hidden
+      = f.label :capital_price
+      = f.text_field :capital_price, class: 'form-control'
+  - else
+    .field.form-group
+      = f.label :capital_price
+      = f.text_field :capital_price, class: 'form-control'
   .field.form-group
     = f.label :selling_price
     = f.text_field :selling_price, class: 'form-control'

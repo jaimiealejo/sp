@@ -19,7 +19,7 @@
 
   .field.form-group
     = f.label :remarks
-    = f.select :remarks, options_for_select(["Follow Up", "Confirmed", "Cancelled"]), value: @appointment.remarks, class: 'form-control'
+    = f.select :remarks, options_for_select(["Follow Up", "Confirmed", "Cancelled"], @appointment.remarks), value: @appointment.remarks, class: 'form-control'
 
   .actions
     = hidden_field_tag 'index', @index

@@ -8,3 +8,7 @@
 ['secretary', 'dentist', 'admin'].each do |role|
 	Role.where({name: role}).first_or_create
 end
+
+# User with ID 1 is always admin (role_id 3)
+user = User.find(3)
+user.update_attributes(role_id:3) if user.role_id != 3

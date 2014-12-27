@@ -3,7 +3,6 @@
     %th Item/Service
     %th Price
     %th Quantity
-    %th
 
   - invoice_details.each do |invoice_detail|
     %tr
@@ -14,4 +13,3 @@
           = Product.find(invoice_detail.product_id).name_and_price
       %td= invoice_detail.price
       %td= invoice_detail.quantity
-      %td= link_to 'Edit', edit_invoice_detail_path(invoice_detail), class: 'btn btn-link btn-xs glyphicon glyphicon-pencil'
