@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141227085347) do
+ActiveRecord::Schema.define(:version => 20141228073738) do
 
   create_table "appointments", :force => true do |t|
     t.string   "sched"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20141227085347) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.string   "est_time"
+    t.datetime "starts_at"
   end
 
   add_index "appointments", ["procedure_id"], :name => "index_appointments_on_procedure_id"

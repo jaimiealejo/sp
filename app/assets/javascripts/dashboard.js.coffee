@@ -16,7 +16,8 @@ jQuery ->
     bJQueryUI: true
 
   pane = window.location.hash.substr(1)
-  if (pane == "appointments")
+  cal = window.location.search.substr(1).indexOf('start_date')
+  if (pane == "appointments" || cal > -1)
     $('#appointments-container').addClass('active')
     $('#appointments-tab').addClass('active')
   else if (pane == "invoices")
@@ -28,3 +29,4 @@ jQuery ->
   else if (pane == "" || pane == "patients")
     $('#patients-container').addClass('active')
     $('#patients-tab').addClass('active')
+

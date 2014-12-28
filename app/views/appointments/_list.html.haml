@@ -1,5 +1,21 @@
 %h2 Appointments
 
+.calendar.fc.fc-ltr.fc-content
+  .fc-view.fc-view-month.fc-grid
+    = month_calendar table: {class: 'table table-bordered table-responsive fc-border-separate'}, td: ->(start_date, current_calendar_date) { {class: "calendar-date", data: {day: current_calendar_date}} }, td: {class: 'fc-day fc-widget-content'}, tr: {class: 'fc-week'}, header: {class: 'fc-header'}, events: appointments do |date, appointments|
+      .row-fluid
+        .fc-day-number.col-md-12
+          = date.strftime('%d')
+        .fc-day-content.col-md-12
+          - appointments.each do |appointment|
+            - if !appointment.is_cancelled?
+              .row-fluid
+                .col-md-4
+                  = appointment.starts_at.strftime('%H:%M')
+                .col-md-8
+                  = appointment.procedure.patient.full_name
+
+
 %table.table.table-hover.table-responsive#appointments
   %thead
     %tr.info
