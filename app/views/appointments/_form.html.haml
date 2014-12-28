@@ -11,7 +11,7 @@
 
   .field.form-group
     = label_tag 'Procedure'
-    = text_field_tag 'procedure', @appointment.procedure.procedure, class: 'form-control'
+    = text_field_tag 'procedure', @appointment.procedure.procedure, id: "procedure-field", placeholder: 'Add procedure/s'
 
   .field.form-group
     = f.label :sched

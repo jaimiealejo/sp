@@ -1,19 +1,19 @@
 .container#main-container
   %ul.nav.nav-tabs.padding-18
-    %li.active
+    %li#patients-tab
       %a{:href=> '#patients-container', 'data-toggle' => 'tab'}
         %h4 Patients
-    %li
+    %li#appointments-tab
       %a{:href=> '#appointments-container', 'data-toggle' => 'tab'}
         %h4 Appointments
-    %li
+    %li#products-tab
       %a{:href=> '#products-container', 'data-toggle' => 'tab'}
         %h4 Products
-    %li
+    %li#invoices-tab
       %a{:href=> '#invoices-container', 'data-toggle' => 'tab'}
         %h4 Invoices
   .tab-content
-    #patients-container.tab-pane.in.active
+    #patients-container.tab-pane
       .row-fluid
         = render 'patients/list', :patients => @patients
     #appointments-container.tab-pane
