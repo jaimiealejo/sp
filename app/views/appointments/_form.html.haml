@@ -17,6 +17,11 @@
     = f.datetime_select :sched, ampm: true, class: 'form-control'
 
   .field.form-group
+    = label_tag 'Estimated Time'
+    = number_field_tag :est_time, class: 'form-control'
+    = select_tag 'est_time_label', options_for_select([["hour", 0], ["minutes", 1]])
+
+  .field.form-group
     = f.label :remarks
     = f.select :remarks, options_for_select(["Follow Up", "Confirmed", "Cancelled"], @appointment.remarks), value: @appointment.remarks, class: 'form-control'
 

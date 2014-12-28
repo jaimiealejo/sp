@@ -18,6 +18,7 @@ class AppointmentsController < ApplicationController
     @procedure = Procedure.new
     @procedure.patient = Patient.find(params[:patient]) if params[:patient]
     @appointment.procedure = @procedure
+    @appointment.est_time = '30'
     respond_with(@appointment)
   end
 
@@ -34,7 +35,8 @@ class AppointmentsController < ApplicationController
 
     @appointment = Appointment.new(
       sched: DateTime.parse(sched),
-      remarks: params[:appointment][:remarks]
+      remarks: params[:appointment][:remarks],
+      est_time: params[:est_time_label].to_i == 1 ? params[:est_time] : (params[:est_time].to_i * 60)
     )
     @appointment.procedure = @procedure
     @appointment.save
@@ -46,9 +48,9 @@ class AppointmentsController < ApplicationController
     sched = ""+params[:appointment]["sched(1i)"]+"-"+params[:appointment]["sched(2i)"]+"-"+params[:appointment]["sched(3i)"]+"T"+params[:appointment]["sched(4i)"]+":"+params[:appointment]["sched(5i)"]+"+08:00"
     @appointment.update_attributes(
       sched: DateTime.parse(sched),
-      remarks: params[:appointment][:remarks]
+      remarks: params[:appointment][:remarks],
+      est_time: params[:est_time_label].to_i == 1 ? params[:est_time] : (params[:est_time].to_i * 60)
     )
-
     @procedure = @appointment.procedure
     @procedure.update_attributes(
       procedure: params[:procedure],
