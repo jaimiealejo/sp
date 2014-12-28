@@ -1,19 +1,21 @@
 jQuery ->
   $('#appointments').dataTable
-    sPaginationType: "full_numbers"
+    sPaginationType: 'full_numbers'
     bJQueryUI: true
+    'order': [[0, 'desc']]
 
   $('#patients').dataTable
-    sPaginationType: "full_numbers"
+    sPaginationType: 'full_numbers'
     bJQueryUI: true
 
   $('#products').dataTable
-    sPaginationType: "full_numbers"
+    sPaginationType: 'full_numbers'
     bJQueryUI: true
 
   $('#invoices').dataTable
-    sPaginationType: "full_numbers"
+    sPaginationType: 'full_numbers'
     bJQueryUI: true
+    'order': [[4, 'desc']]
 
   pane = window.location.hash.substr(1)
   cal = window.location.search.substr(1).indexOf('start_date')

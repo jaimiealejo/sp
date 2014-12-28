@@ -1,6 +1,7 @@
 %table.table.table-hover.table-responsive#procedures
   %thead
     %tr.info
+      %th
       %th Procedure
       %th Tooth no
       %th
@@ -19,6 +20,7 @@
       - appointment = Appointment.where(procedure_id: procedure.id).first
       - if !appointment || appointment.remarks != 'Cancelled'
         %tr
+          %td= procedure.created_at.strftime('%d %b %y')
           %td= procedure.procedure
           %td= procedure.tooth_no
           %td

@@ -7,18 +7,19 @@
 %table.table.table-hover.table-responsive#inventories
   %thead
     %tr.info
+      %th Updated At
       %th Product
       %th Quantity
       %th Remarks
       %th User
-      %th Updated At
       %th
   %tbody
     - @inventories.each do |inventory|
       %tr
+        %td= inventory.updated_at
         %td= link_to inventory.product.name, product_path(inventory.product)
         %td= inventory.quantity
         %td= inventory.remarks
         %td= inventory.try(:user).try(:email)
-        %td= inventory.updated_at
+
         %td= link_to 'Update Info', edit_inventory_path(inventory), class: 'btn btn-link btn-xs glyphicon glyphicon-pencil'

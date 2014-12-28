@@ -3,5 +3,6 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 jQuery ->
   $('#procedures').dataTable
-    sPaginationType: "full_numbers"
+    sPaginationType: 'full_numbers'
     bJQueryUI: true
+    'order': [[0, 'desc']]
