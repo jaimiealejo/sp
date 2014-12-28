@@ -7,6 +7,7 @@
       %th Patient
       %th Remarks
       %th Procedure
+      %th Estimated Time
       %th
 
   %tbody
@@ -16,6 +17,7 @@
         %td= link_to appointment.procedure.patient.full_name, patient_path(appointment.procedure.patient)
         %td= appointment.remarks
         %td= appointment.procedure.procedure
+        %td= appointment.est_time
         %td
           %span= link_to 'Change Schedule', edit_appointment_path(appointment, index:1), class: 'btn btn-link btn-xs glyphicon glyphicon-pencil'
           - if appointment.try(:is_confirmed?)
