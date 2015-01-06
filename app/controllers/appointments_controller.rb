@@ -36,7 +36,8 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.new(
       sched: DateTime.parse(sched),
       remarks: params[:appointment][:remarks],
-      est_time: params[:est_time_label].to_i == 1 ? params[:est_time] : (params[:est_time].to_i * 60)
+      est_time: params[:est_time_label].to_i == 1 ? params[:est_time] : (params[:est_time].to_i * 60),
+      starts_at: DateTime.parse(sched)
     )
     @appointment.procedure = @procedure
     @appointment.save
@@ -49,7 +50,8 @@ class AppointmentsController < ApplicationController
     @appointment.update_attributes(
       sched: DateTime.parse(sched),
       remarks: params[:appointment][:remarks],
-      est_time: params[:est_time_label].to_i == 1 ? params[:est_time] : (params[:est_time].to_i * 60)
+      est_time: params[:est_time_label].to_i == 1 ? params[:est_time] : (params[:est_time].to_i * 60),
+      starts_at: DateTime.parse(sched)
     )
     @procedure = @appointment.procedure
     @procedure.update_attributes(
