@@ -4,7 +4,7 @@ class InventoriesController < ApplicationController
   respond_to :html
 
   def index
-    @inventories = Inventory.all.sort_by &:updated_at
+    @inventories = Inventory.order("updated_at desc").all
     respond_with(@inventories)
   end
 

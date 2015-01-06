@@ -6,8 +6,7 @@
         - @procedure.errors.full_messages.each do |msg|
           %li= msg
   .field.form-group
-    = f.label :procedure
-    = f.text_field :procedure, class: 'form-control'
+    = f.text_field :procedure, class: 'form-control', id: "procedure-field", placeholder: 'Add procedure/s'
   .field.form-group
     = f.label :tooth_no
     = f.text_field :tooth_no, class: 'form-control'

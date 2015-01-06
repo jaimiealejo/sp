@@ -9,6 +9,7 @@
       %th Balance
       %th Status
       %th Last Updated
+      %th
 
   %tbody
     - invoices.each do |invoice|
@@ -18,4 +19,7 @@
         %td= invoice.amt_received
         %td= invoice.balance
         %td= invoice.status
-        %td= invoice.updated_at
+        %td= invoice.updated_at.strftime('%d %b %y %H:%M')
+        %td
+          - if invoice.is_partial_invoice?
+            %span= link_to 'Generate Partial Invoice', generate_partial_invoice_path(invoice.id), class: 'glyphicon glyphicon-plus btn btn-link btn-xs'

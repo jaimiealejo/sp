@@ -11196,6 +11196,18 @@
   text-align:center;
   position:static
 }
+.fc-header>span
+{
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.fc-header
+{
+  color:#65a0ce;
+  font-size:22px;
+  text-align: center;
+  padding-bottom: 8px;
+}
 .fc-header-title>h2
 {
   font-size:22px;

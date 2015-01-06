@@ -60,8 +60,31 @@ class InvoicesController < ApplicationController
     redirect_to edit_invoice_path(@invoice)
   end
 
+  def generate_partial
+    invoice = Invoice.find(params[:id])
+    @invoice = Invoice.new
+    @invoice.patient = invoice.patient
+    @invoice.status = invoice.status
+    @invoice.total_amt_due = invoice.balance
+    @invoice.invoice_details << create_invoice_detail(invoice)
+    @invoice.save
+    invoice.update_attributes(status: "OCDC#{@invoice.id}")
+    redirect_to edit_invoice_path(@invoice)
+  end
+
   private
     def set_invoice
       @invoice = Invoice.find(params[:id])
+    end
+
+    def create_invoice_detail(invoice)
+      invoice_detail = InvoiceDetail.new(
+        quantity: 1,
+        invoice_type: "Procedure",
+        price: invoice.balance,
+        procedure_id: invoice.invoice_details.first.procedure_id
+      )
+      invoice_detail.save
+      return invoice_detail
     end
 end

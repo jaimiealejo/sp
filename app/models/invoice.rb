@@ -12,6 +12,10 @@ class Invoice < ActiveRecord::Base
   end
 
   def compute_total_amt_due
-    self.total_amt_due = self.invoice_details.map(&:price).sum
+    self.total_amt_due = self.invoice_details.map(&:price).sum if self.invoice_details.present?
+  end
+
+  def is_partial_invoice?
+    return self.status == "Partial Payment"
   end
 end
