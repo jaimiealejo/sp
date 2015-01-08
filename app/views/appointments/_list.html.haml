@@ -29,7 +29,7 @@
   %tbody
     - appointments.each do |appointment|
       %tr
-        %td= appointment.starts_at.strftime('%d %b %y %H:%M')
+        %td= appointment.starts_at.strftime('%Y-%m-%d %H:%M')
         %td= link_to appointment.procedure.patient.full_name, patient_path(appointment.procedure.patient)
         %td= appointment.remarks
         %td= appointment.procedure.procedure

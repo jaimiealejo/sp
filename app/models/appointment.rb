@@ -16,7 +16,7 @@ class Appointment < ActiveRecord::Base
   end
 
   def check_range
-  	q = "%#{DateTime.parse(self.sched).strftime('%Y-%m-%d')}%"
+  	q = "%#{self.sched.strftime('%Y-%m-%d')}%"
   	appointments = Appointment.where("sched like ?", q)
   	appointments.each do |appointment|
       if self.sched == appointment.sched
@@ -27,7 +27,7 @@ class Appointment < ActiveRecord::Base
   	  if appointment.est_time.present? && !appointment.est_time.to_i.zero?
 		    end_range = to_range + appointment.est_time.to_i.minutes
         date_range = to_range.strftime('%H%M').to_i..end_range.strftime('%H%M').to_i
-  	    if date_range.include?self.sched
+  	    if date_range.include?self.sched.strftime('%H%M').to_i
           return errors.add(:sched, "Schedule is already taken. Please select another date/time.")
         end
   	  end

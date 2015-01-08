@@ -34,7 +34,7 @@ class AppointmentsController < ApplicationController
     @procedure.save
 
     @appointment = Appointment.new(
-      sched: DateTime.parse(sched),
+      sched: sched,
       remarks: params[:appointment][:remarks],
       est_time: params[:est_time_label].to_i == 1 ? params[:est_time] : (params[:est_time].to_i * 60),
       starts_at: DateTime.parse(sched)
@@ -46,23 +46,11 @@ class AppointmentsController < ApplicationController
   end
 
   def update
-    sched = ""+params[:appointment]["sched(1i)"]+"-"+params[:appointment]["sched(2i)"]+"-"+params[:appointment]["sched(3i)"]+"T"+params[:appointment]["sched(4i)"]+":"+params[:appointment]["sched(5i)"]+"+08:00"
-    @appointment.update_attributes(
-      sched: DateTime.parse(sched),
-      remarks: params[:appointment][:remarks],
-      est_time: params[:est_time_label].to_i == 1 ? params[:est_time] : (params[:est_time].to_i * 60),
-      starts_at: DateTime.parse(sched)
-    )
-    @procedure = @appointment.procedure
-    @procedure.update_attributes(
-      procedure: params[:procedure],
-      patient_id: params[:patient_id]
-    )
-    redirect_path(params[:index])
     begin
       sched = ""+params[:appointment]["sched(1i)"]+"-"+params[:appointment]["sched(2i)"]+"-"+params[:appointment]["sched(3i)"]+"T"+params[:appointment]["sched(4i)"]+":"+params[:appointment]["sched(5i)"]+"+08:00"
       @appointment.update_attributes(
-        sched: DateTime.parse(sched),
+        sched: sched,
+        starts_at: DateTime.parse(sched),
         remarks: params[:appointment][:remarks],
         est_time: params[:est_time_label].to_i == 1 ? params[:est_time] : (params[:est_time].to_i * 60)
       )
