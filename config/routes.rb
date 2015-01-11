@@ -28,5 +28,6 @@ Sp::Application.routes.draw do
   put '/appointments/:id/cancel', to: 'appointments#cancel', as: 'cancel_appointment'
   get '/invoice/:id/generate', to: 'invoices#generate', as: 'generate_invoice'
   get '/invoice/:id/generate_partial', to: 'invoices#generate_partial', as: 'generate_partial_invoice'
+  put '/dashboard/:id/update_user_note', to: 'dashboard#update_user_note', as: 'update_user_note'
   root :to => 'dashboard#index'
 end

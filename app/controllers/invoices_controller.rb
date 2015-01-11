@@ -56,7 +56,7 @@ class InvoicesController < ApplicationController
     @invoice = Invoice.new
     @invoice.patient = @patient
     @invoice.create_from_procedure_invoice_details
-    if @invoice.total_amt_due.present? && @invoice.total_amt_due.zero?
+    if @invoice.total_amt_due.present? && !@invoice.total_amt_due.zero?
       @invoice.save
       redirect_to edit_invoice_path(@invoice)
     else

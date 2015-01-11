@@ -1,5 +1,6 @@
-= DateTime.now.strftime('%b/%d/%Y %H:%M')
-.row-fluid
+%h2
+  = DateTime.now.strftime('%b/%d/%Y %H:%M')
+.row-fluid{'class' => current_user.is_secretary? ? 'hidden':'show'}
   .col-m-7.infobox-container
     .infobox.infobox-blue.infobox-dark
       .infobox-chart
@@ -28,3 +29,33 @@
         .infobox-content
           Monthly invoice
       .div.stat
+%hr
+.row-fluid
+  %table.table.table-hover.table-responsive#appointments
+    %thead
+      %tr.info
+        %th Scheduled for Today
+        %th Patient
+        %th Remarks
+        %th Procedure
+        %th Estimated Time
+        %th Updated By
+        %th
+
+    %tbody
+      - appointments_for_today.each do |appointment|
+        %tr
+          %td= appointment.starts_at.strftime('%H:%M')
+          %td= link_to appointment.procedure.patient.full_name, patient_path(appointment.procedure.patient)
+          %td= appointment.remarks
+          %td= appointment.procedure.procedure
+          %td= appointment.est_time
+          %td= appointment.updated_by
+%hr
+.row-fluid
+  = form_for current_user, url: update_user_note_path(current_user) do |f|
+    .field.form-group
+      = f.label :notes
+      = f.text_area :notes, class: 'form-control'
+    .actions
+      = f.submit 'Save', class: 'btn btn-primary'
