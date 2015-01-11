@@ -29,9 +29,8 @@ class AppointmentsController < ApplicationController
   def create
     sched = ""+params[:appointment]["sched(1i)"]+"-"+params[:appointment]["sched(2i)"]+"-"+params[:appointment]["sched(3i)"]+"T"+params[:appointment]["sched(4i)"]+":"+params[:appointment]["sched(5i)"]+"+08:00"
     @procedure = Procedure.new
-    @procedure.procedure = params[:procedure]
+    @procedure.procedure = params[:procedure].present? ? params[:procedure] : 'Checkup'
     @procedure.patient = Patient.find(params[:patient_id])
-    @procedure.save
 
     @appointment = Appointment.new(
       sched: sched,
@@ -40,9 +39,15 @@ class AppointmentsController < ApplicationController
       starts_at: DateTime.parse(sched)
     )
     @appointment.procedure = @procedure
-    @appointment.save
 
-    redirect_path(params[:index])
+    if (@appointment.valid?)
+      @procedure.save
+      @appointment.save
+      redirect_path(params[:index])
+    else
+      @appointment.sched = DateTime.parse(@appointment.sched)
+      respond_with(@appointment)
+    end
   end
 
   def update
