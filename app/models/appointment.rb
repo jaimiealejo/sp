@@ -2,7 +2,7 @@ class Appointment < ActiveRecord::Base
 	extend SimpleCalendar
 	has_calendar
   belongs_to :procedure
-  attr_accessible :remarks, :sched, :est_time, :starts_at
+  attr_accessible :remarks, :sched, :est_time, :starts_at, :updated_by
   validates :sched, presence: true
   validate :check_range
 
@@ -16,7 +16,7 @@ class Appointment < ActiveRecord::Base
   end
 
   def check_range
-  	q = "%#{self.sched.split('T').first}%"
+  	q = "%#{self.sched.split(' ').first}%"
   	appointments = Appointment.where("sched like ?", q)
   	appointments.each do |appointment|
       if self.sched == appointment.sched

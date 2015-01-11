@@ -27,19 +27,19 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    sched = ""+params[:appointment]["sched(1i)"]+"-"+params[:appointment]["sched(2i)"]+"-"+params[:appointment]["sched(3i)"]+"T"+params[:appointment]["sched(4i)"]+":"+params[:appointment]["sched(5i)"]+"+08:00"
+    sched = ""+params[:appointment]["sched(1i)"]+"-"+params[:appointment]["sched(2i)"]+"-"+params[:appointment]["sched(3i)"]+" "+params[:appointment]["sched(4i)"]+":"+params[:appointment]["sched(5i)"]+"+08:00"
     @procedure = Procedure.new
-    @procedure.procedure = params[:procedure].present? ? params[:procedure] : 'Checkup'
+    @procedure.procedure = params[:procedure].present? ? params[:procedure] : 'Consultation'
     @procedure.patient = Patient.find(params[:patient_id])
 
     @appointment = Appointment.new(
       sched: sched,
       remarks: params[:appointment][:remarks],
       est_time: params[:est_time_label].to_i == 1 ? params[:est_time] : (params[:est_time].to_i * 60),
-      starts_at: DateTime.parse(sched)
+      starts_at: DateTime.parse(sched),
+      updated_by: current_user.email
     )
     @appointment.procedure = @procedure
-
     if (@appointment.valid?)
       @procedure.save
       @appointment.save
@@ -57,7 +57,8 @@ class AppointmentsController < ApplicationController
         sched: sched,
         starts_at: DateTime.parse(sched),
         remarks: params[:appointment][:remarks],
-        est_time: params[:est_time_label].to_i == 1 ? params[:est_time] : (params[:est_time].to_i * 60)
+        est_time: params[:est_time_label].to_i == 1 ? params[:est_time] : (params[:est_time].to_i * 60),
+        updated_by: current_user.email
       )
       @procedure = @appointment.procedure
       @procedure.update_attributes(
@@ -71,7 +72,7 @@ class AppointmentsController < ApplicationController
   end
 
   def cancel
-    @appointment.update_attributes(remarks: 'Cancelled')
+    @appointment.update_attributes(remarks: 'Cancelled', updated_by: current_user.email)
     redirect_path(params[:index])
   end
 

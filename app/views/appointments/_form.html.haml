@@ -10,7 +10,7 @@
     = select_tag 'patient_id', options_from_collection_for_select(Patient.all.sort_by(&:last_name), 'id','full_name', @appointment.procedure.try(:patient).try(:id)), class: 'form-control'
 
   .field.form-group
-    = text_field_tag 'procedure', @appointment.procedure.procedure, id: "procedure-field", placeholder: 'Add procedure/s'
+    = text_field_tag 'procedure', @appointment.procedure.procedure, id: "procedure-field", placeholder: 'Add procedure/s (Default procedure is consultation)'
 
   .field.form-group
     = f.label :sched

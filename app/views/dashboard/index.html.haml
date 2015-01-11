@@ -1,5 +1,8 @@
 .container#main-container
   %ul.nav.nav-tabs.padding-18
+    %li#overview-tab
+      %a{:href=> '#overview-container', 'data-toggle' => 'tab'}
+        %h4 Overview
     %li#patients-tab
       %a{:href=> '#patients-container', 'data-toggle' => 'tab'}
         %h4 Patients
@@ -13,6 +16,9 @@
       %a{:href=> '#invoices-container', 'data-toggle' => 'tab'}
         %h4 Invoices
   .tab-content
+    #overview-container.tab-pane
+      .row-fuid
+        = render 'dashboard/overview', :invoice_for_today => @invoice_for_today, :invoice_for_yesterday => @invoice_for_yesterday, :invoice_for_current_week => @invoice_for_current_week, :invoice_for_last_week => @invoice_for_last_week, :invoice_for_current_month => @invoice_for_current_month, :invoice_for_last_month => @invoice_for_last_month
     #patients-container.tab-pane
       .row-fluid
         = render 'patients/list', :patients => @patients
