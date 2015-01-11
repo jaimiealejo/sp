@@ -15,9 +15,9 @@
     - invoices.each do |invoice|
       %tr
         %td= "OCDC#{invoice.id}"
-        %td= invoice.total_amt_due
-        %td= invoice.amt_received
-        %td= invoice.balance
+        %td.tabtoright= number_with_precision(invoice.total_amt_due, :precision => 2)
+        %td.tabtoright= number_with_precision(invoice.amt_received, :precision => 2)
+        %td.tabtoright= number_with_precision(invoice.balance, :precision => 2)
         %td= invoice.status
         %td= invoice.updated_at.strftime('%d %b %y %H:%M')
         %td

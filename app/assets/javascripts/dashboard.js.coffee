@@ -28,7 +28,15 @@ jQuery ->
   else if (pane == "products")
     $('#products-container').addClass('active')
     $('#products-tab').addClass('active')
-  else if (pane == "" || pane == "patients")
+  else if (pane == "patients")
     $('#patients-container').addClass('active')
     $('#patients-tab').addClass('active')
+  else if (pane == "" || pane == "overview")
+    $('#overview-container').addClass('active')
+    $('#overview-tab').addClass('active')
 
+  $('.sparkline').sparkline('html', {type: 'bar', height: '40px', barWidth:5, barColor:'#fff'})
+  $('.sparkline').each ->
+    v = $(this).getAttribute("values").split(',')
+
+  return

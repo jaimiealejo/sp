@@ -14,10 +14,10 @@
   = @product.stock_available
 %p
   %b Capital price:
-  = @product.capital_price
+  = number_with_precision(@product.capital_price, :precision => 2)
 %p
   %b Selling price:
-  = @product.selling_price
+  = number_with_precision(@product.selling_price, :precision => 2)
 %p
   %b Info:
   = @product.info

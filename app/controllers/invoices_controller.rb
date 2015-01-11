@@ -56,8 +56,12 @@ class InvoicesController < ApplicationController
     @invoice = Invoice.new
     @invoice.patient = @patient
     @invoice.create_from_procedure_invoice_details
-    @invoice.save
-    redirect_to edit_invoice_path(@invoice)
+    if @invoice.total_amt_due.present? && @invoice.total_amt_due.zero?
+      @invoice.save
+      redirect_to edit_invoice_path(@invoice)
+    else
+      redirect_to patient_path(@patient), {:notice => "No new invoice to be generated."} 
+    end
   end
 
   def generate_partial
