@@ -10,7 +10,7 @@
           = number_with_precision(invoice_for_today, :precision => 2)
         .infobox-content
           Today's invoice
-      .div.stat
+      .stat
     .infobox.infobox-green.infobox-dark
       .infobox-chart
         %span.sparkline{'values' => "#{invoice_for_last_week.to_i}, #{invoice_for_current_week.to_i}"}
@@ -18,8 +18,8 @@
         .infobox-data-number
           = number_with_precision(invoice_for_current_week, :precision => 2)
         .infobox-content
-          Weekly invoice  
-      .div.stat
+          Weekly invoice
+      .stat
     .infobox.infobox-orange.infobox-dark
       .infobox-chart
         %span.sparkline{'values' => "#{invoice_for_last_month.to_i}, #{invoice_for_current_month.to_i}"}
@@ -28,7 +28,7 @@
           = number_with_precision(invoice_for_current_month, :precision => 2)
         .infobox-content
           Monthly invoice
-      .div.stat
+      .stat
 %hr
 .row-fluid
   %table.table.table-hover.table-responsive#appointments

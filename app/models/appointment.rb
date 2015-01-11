@@ -26,7 +26,7 @@ class Appointment < ActiveRecord::Base
       to_range = DateTime.parse(appointment.sched)
   	  if appointment.est_time.present? && !appointment.est_time.to_i.zero?
 		    end_range = to_range + appointment.est_time.to_i.minutes
-        date_range = to_range.strftime('%H%M').to_i..end_range.strftime('%H%M').to_i
+        date_range = to_range.strftime('%H%M').to_i...end_range.strftime('%H%M').to_i
   	    if date_range.include?DateTime.parse(self.sched).strftime('%H%M').to_i
           return errors.add(:sched, "Schedule is already taken. Please select another date/time.")
         end
