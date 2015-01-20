@@ -18,8 +18,8 @@
 
   .field.form-group
     = label_tag 'Estimated Time'
-    = number_field_tag :est_time, class: 'form-control'
-    = select_tag 'est_time_label', options_for_select([["hour", 0], ["minutes", 1]])
+    = number_field_tag 'est_time', @appointment.est_time
+    = select_tag 'est_time_label', options_for_select([["minutes", 1], ["hour", 0]])
 
   .field.form-group
     = f.label :remarks

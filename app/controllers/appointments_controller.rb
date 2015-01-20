@@ -53,19 +53,24 @@ class AppointmentsController < ApplicationController
   def update
     begin
       sched = ""+params[:appointment]["sched(1i)"]+"-"+params[:appointment]["sched(2i)"]+"-"+params[:appointment]["sched(3i)"]+"T"+params[:appointment]["sched(4i)"]+":"+params[:appointment]["sched(5i)"]+"+08:00"
-      @appointment.update_attributes(
+      valid = @appointment.update_attributes(
         sched: sched,
         starts_at: DateTime.parse(sched),
         remarks: params[:appointment][:remarks],
         est_time: params[:est_time_label].to_i == 1 ? params[:est_time] : (params[:est_time].to_i * 60),
         updated_by: current_user.email
       )
-      @procedure = @appointment.procedure
-      @procedure.update_attributes(
-        procedure: params[:procedure],
-        patient_id: params[:patient_id]
-      )
-      redirect_path(params[:index])
+      if valid
+        @procedure = @appointment.procedure
+        @procedure.update_attributes(
+          procedure: params[:procedure],
+          patient_id: params[:patient_id]
+        )
+        redirect_path(params[:index])
+      else
+        @appointment.sched = DateTime.parse(sched)
+        respond_with(@appointment)
+      end
     rescue
       redirect_to(edit_appointment_path(params[:id]), {:alert => "Please check the selected schedule date."})
     end
