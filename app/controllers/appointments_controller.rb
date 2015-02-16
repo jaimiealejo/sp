@@ -52,7 +52,7 @@ class AppointmentsController < ApplicationController
 
   def update
     begin
-      sched = ""+params[:appointment]["sched(1i)"]+"-"+params[:appointment]["sched(2i)"]+"-"+params[:appointment]["sched(3i)"]+"T"+params[:appointment]["sched(4i)"]+":"+params[:appointment]["sched(5i)"]+"+08:00"
+      sched = ""+params[:appointment]["sched(1i)"]+"-"+params[:appointment]["sched(2i)"]+"-"+params[:appointment]["sched(3i)"]+" "+params[:appointment]["sched(4i)"]+":"+params[:appointment]["sched(5i)"]+"+08:00"
       valid = @appointment.update_attributes(
         sched: sched,
         starts_at: DateTime.parse(sched),
@@ -77,7 +77,9 @@ class AppointmentsController < ApplicationController
   end
 
   def cancel
-    @appointment.update_attributes(remarks: 'Cancelled', updated_by: current_user.email)
+    @appointment.update_attributes(
+      remarks: 'Cancelled', 
+      updated_by: current_user.email)
     redirect_path(params[:index])
   end
 

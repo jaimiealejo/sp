@@ -35,9 +35,11 @@ class ProceduresController < ApplicationController
     @invoice_detail.save
 
     @procedure.invoice_detail = @invoice_detail
-    @procedure.save
-
-    redirect_to patient_path(@procedure.patient)
+    if (@procedure.save)
+      redirect_to patient_path(@procedure.patient)
+    else
+      respond_with(@procedure.patient)
+    end
   end
 
   def update

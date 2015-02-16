@@ -5,6 +5,7 @@
       %ul
         - @procedure.errors.full_messages.each do |msg|
           %li= msg
+          
   .field.form-group
     = f.text_field :procedure, class: 'form-control', id: "procedure-field", placeholder: 'Add procedure/s'
   .field.form-group

@@ -40,8 +40,8 @@ jQuery ->
     container = $(this).closest('.infobox').find('.stat')
     v = $(this).attr('values').split(',')
     stat = v[1]/v[0]
-    container.text(stat)
-
+    container.text(stat.toFixed(2)+'%')
+    
     if stat < 0
       container.addClass('stat-important')
     else if stat > 0

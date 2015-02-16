@@ -7,7 +7,7 @@
 %h3
   Editing invoice
   %span.actions
-    = link_to 'Cancel', root_path, class: 'btn btn-link btn-xs glyphicon glyphicon-remove-circle'
+    = link_to 'Cancel', invoice_path(@invoice), method: 'delete', confirm: 'Are you sure?', class: 'btn btn-link btn-xs glyphicon glyphicon-remove-circle'
 
 .container-fluid
   %h4 Invoice Details

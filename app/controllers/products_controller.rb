@@ -23,13 +23,19 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(params[:product])
     @product.capital_price = BigDecimal.new('1') if !@product.capital_price.present?
-    @product.save
-    redirect_to root_path(anchor: 'products')
+    if (@product.save)
+      redirect_to root_path(anchor: 'products')
+    else
+      respond_with(@product)
+    end
   end
 
   def update
-    @product.update_attributes(params[:product])
-    redirect_to root_path(anchor: 'products')
+    if (@product.update_attributes(params[:product]))
+      redirect_to root_path(anchor: 'products')
+    else
+      respond_with(@product)
+    end
   end
 
   def destroy

@@ -31,7 +31,7 @@
       .stat
 %hr
 .row-fluid
-  %table.table.table-hover.table-responsive#appointments
+  %table.table.table-hover.table-responsive#appointmentsinoverview
     %thead
       %tr.info
         %th Scheduled for Today
@@ -40,7 +40,6 @@
         %th Procedure
         %th Estimated Time
         %th Updated By
-        %th
 
     %tbody
       - appointments_for_today.each do |appointment|

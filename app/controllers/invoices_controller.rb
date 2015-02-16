@@ -15,6 +15,7 @@ class InvoicesController < ApplicationController
   def new
     @invoice = Invoice.new
     @invoice.patient = Patient.find(params[:patient_id]) if params[:patient_id]
+    @invoice.amt_received = 0
     respond_with(@invoice)
   end
 
@@ -47,8 +48,13 @@ class InvoicesController < ApplicationController
   end
 
   def destroy
+    (@invoice.invoice_details).each do |invoicedetails|
+      invoicedetails.update_attributes(
+        invoice_id: nil
+    )
+    end
     @invoice.destroy
-    respond_with(@invoice)
+    redirect_to patient_path(@invoice.patient)
   end
 
   def generate

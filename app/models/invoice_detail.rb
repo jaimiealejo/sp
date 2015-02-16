@@ -1,6 +1,6 @@
 class InvoiceDetail < ActiveRecord::Base
   belongs_to :type
-  attr_accessible :price, :quantity, :invoice_type, :product_id, :procedure_id
+  attr_accessible :price, :quantity, :invoice_type, :product_id, :procedure_id, :invoice_id
   validate :stock_quantity
   before_save :compute_price
   after_create :create_inventory

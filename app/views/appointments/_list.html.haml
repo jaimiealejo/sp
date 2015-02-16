@@ -34,14 +34,14 @@
         %td= link_to appointment.procedure.patient.full_name, patient_path(appointment.procedure.patient)
         %td= appointment.remarks
         %td= appointment.procedure.procedure
-        %td= appointment.est_time
+        %td.tabtoright= appointment.est_time
         %td= appointment.updated_by
         %td
           %span= link_to 'Change Schedule', edit_appointment_path(appointment, index:1), class: 'btn btn-link btn-xs glyphicon glyphicon-pencil'
           - if appointment.try(:is_confirmed?)
             %span
               \|
-            %span= link_to 'Cancel Appointment', cancel_appointment_path(appointment, index:1), method: 'put', class: 'btn btn-link btn-xs glyphicon glyphicon-remove-sign'
+            %span= link_to 'Cancel Appointment', cancel_appointment_path(appointment, index:1), method: 'put', confirm: 'Are you sure you want to cancel appointment?', class: 'btn btn-link btn-xs glyphicon glyphicon-remove-sign'
 
 %br
 
